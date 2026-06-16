@@ -1,0 +1,280 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = Astro.url;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Inter font with high fetchpriority -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-200 antialiased">
+    <a href="#main-content" class="skip-link" tabindex="1">
+      Skip to content
+    </a>
+
+    <div id="cmd-overlay" class="command-palette-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+      <div class="command-palette">
+        <div class="flex items-center gap-3 border-b border-zinc-800/50 px-4">
+          <svg class="h-4 w-4 shrink-0 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          <input
+            id="cmd-input"
+            type="text"
+            placeholder="Navigate to…"
+            autocomplete="off"
+            spellcheck="false"
+            class="flex-1 bg-transparent py-4 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none"
+          />
+          <kbd class="hidden rounded-md border border-zinc-800 bg-zinc-950 px-1.5 py-0.5 text-[10px] font-medium text-zinc-600 sm:inline-block">
+            ESC
+          </kbd>
+        </div>
+        <div id="cmd-results" class="max-h-64 overflow-y-auto py-2" role="listbox"></div>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <script>
+      (() => {
+        // ─── Scroll reveal + stagger ────────────────────────────────────
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                revealObserver.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+        );
+
+        for (const el of document.querySelectorAll("[data-reveal]")) {
+          revealObserver.observe(el);
+        }
+
+        // Auto-stagger children of [data-reveal-stagger]
+        for (const parent of document.querySelectorAll("[data-reveal-stagger]")) {
+          const children = parent.querySelectorAll("[data-reveal]");
+          children.forEach((child, i) => {
+            const delay = Math.min(i + 1, 7);
+            child.setAttribute("data-reveal-delay", delay);
+          });
+        }
+
+        // ─── Nav active section tracking ────────────────────────────────
+        const navLinks = document.querySelectorAll("[data-nav-link]");
+        const sections = document.querySelectorAll("section[id]");
+
+        if (navLinks.length && sections.length) {
+          const sectionObserver = new IntersectionObserver(
+            (entries) => {
+              let active = "";
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  active = entry.target.id;
+                }
+              }
+              if (active) {
+                for (const link of navLinks) {
+                  const target = link.getAttribute("href")?.replace("#", "");
+                  link.classList.toggle("active", target === active);
+                }
+              }
+            },
+            { threshold: 0.2, rootMargin: "-80px 0px -60% 0px" }
+          );
+
+          for (const section of sections) {
+            sectionObserver.observe(section);
+          }
+        }
+
+        // ─── Tilt effect (RAF-throttled) ────────────────────────────────
+        let tiltCard = null;
+        let tiltX = 0;
+        let tiltY = 0;
+        let tiltQueued = false;
+
+        function applyTilt() {
+          tiltQueued = false;
+          if (tiltCard) {
+            tiltCard.style.transform = `perspective(600px) rotateY(${tiltX * 4}deg) rotateX(${tiltY * 4}deg)`;
+          }
+        }
+
+        document.addEventListener("pointermove", (e) => {
+          const card = e.target.closest("[data-tilt]");
+          if (card !== tiltCard) {
+            if (tiltCard) tiltCard.style.transform = "";
+            tiltCard = card;
+          }
+          if (!tiltCard) return;
+          const rect = tiltCard.getBoundingClientRect();
+          tiltX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+          tiltY = ((e.clientY - rect.top) / rect.height - 0.5) * -2;
+          if (!tiltQueued) {
+            tiltQueued = true;
+            requestAnimationFrame(applyTilt);
+          }
+        }, { passive: true });
+
+        document.addEventListener("pointerleave", () => {
+          if (tiltCard) {
+            tiltCard.style.transform = "";
+            tiltCard = null;
+          }
+          tiltQueued = false;
+        }, { passive: true });
+
+        // ─── Command palette ────────────────────────────────────────────
+        const overlay = document.getElementById("cmd-overlay");
+        const input = document.getElementById("cmd-input");
+        const results = document.getElementById("cmd-results");
+        let cmdOpen = false;
+        let cmdItems = [];
+        let cmdActiveIdx = -1;
+
+        const sectionIcons = {
+          work: "W",
+          stack: "S",
+          services: "Sv",
+          "why-us": "W",
+          about: "A",
+          contact: "C",
+        };
+
+        const cmdSections = [
+          { id: "work", label: "Work" },
+          { id: "stack", label: "Tech Stack" },
+          { id: "services", label: "Services" },
+          { id: "why-us", label: "Why Forge Systems" },
+          { id: "about", label: "About" },
+          { id: "contact", label: "Contact" },
+        ];
+
+        function renderCmdItems(query) {
+          const q = query.toLowerCase().trim();
+          cmdItems = q
+            ? cmdSections.filter((s) => s.label.toLowerCase().includes(q))
+            : cmdSections;
+          cmdActiveIdx = -1;
+          results.innerHTML = cmdItems
+            .map(
+              (item, i) =>
+                `<div data-cmd-item role="option" aria-selected="false" data-index="${i}" data-href="#${item.id}"><span class="cmd-icon" aria-hidden="true">${sectionIcons[item.id] || "•"}</span>${item.label}</div>`
+            )
+            .join("");
+          if (cmdItems.length === 0) {
+            results.innerHTML =
+              '<div class="px-4 py-6 text-center text-xs text-zinc-600">No results</div>';
+          }
+        }
+
+        function cmdNavigate(idx) {
+          const items = results.querySelectorAll("[data-cmd-item]");
+          items.forEach((el, i) => {
+            el.classList.toggle("active", i === idx);
+            el.setAttribute("aria-selected", i === idx);
+          });
+          if (items[idx]) items[idx].scrollIntoView({ block: "nearest" });
+        }
+
+        function cmdGo() {
+          const active = results.querySelector("[data-cmd-item].active");
+          if (active) {
+            const href = active.getAttribute("data-href");
+            if (href) {
+              closeCmd();
+              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }
+
+        function openCmd() {
+          cmdOpen = true;
+          overlay.classList.add("open");
+          renderCmdItems("");
+          input.value = "";
+          input.focus();
+        }
+
+        function closeCmd() {
+          cmdOpen = false;
+          overlay.classList.remove("open");
+          document.activeElement?.blur();
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+            e.preventDefault();
+            cmdOpen ? closeCmd() : openCmd();
+            return;
+          }
+          if (!cmdOpen) return;
+          if (e.key === "Escape") { closeCmd(); return; }
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            cmdActiveIdx = Math.min(cmdActiveIdx + 1, cmdItems.length - 1);
+            cmdNavigate(cmdActiveIdx);
+            return;
+          }
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            cmdActiveIdx = Math.max(cmdActiveIdx - 1, 0);
+            cmdNavigate(cmdActiveIdx);
+            return;
+          }
+          if (e.key === "Enter") { e.preventDefault(); cmdGo(); }
+        });
+
+        input?.addEventListener("input", () => renderCmdItems(input.value));
+
+        results?.addEventListener("click", (e) => {
+          const item = e.target.closest("[data-cmd-item]");
+          if (item) {
+            cmdActiveIdx = parseInt(item.getAttribute("data-index"));
+            cmdNavigate(cmdActiveIdx);
+            cmdGo();
+          }
+        });
+
+        overlay?.addEventListener("click", (e) => {
+          if (e.target === overlay) closeCmd();
+        });
+      })();
+    </script>
+  </body>
+</html>

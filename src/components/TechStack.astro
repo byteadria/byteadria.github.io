@@ -1,0 +1,203 @@
+---
+export interface TechItem {
+  id: string;
+  name: string;
+  color: string;
+}
+
+export interface Props {
+  sectionId?: string;
+  heading?: string;
+  items?: TechItem[];
+}
+
+const defaults: TechItem[] = [
+  { id: "php", name: "PHP", color: "#777BB4" },
+  { id: "symfony", name: "Symfony", color: "#000000" },
+  { id: "react", name: "React", color: "#61DAFB" },
+  { id: "typescript", name: "TypeScript", color: "#3178C6" },
+  { id: "mysql", name: "MySQL", color: "#4479A1" },
+  { id: "postgresql", name: "PostgreSQL", color: "#4169E1" },
+  { id: "redis", name: "Redis", color: "#DC382D" },
+  { id: "docker", name: "Docker", color: "#2496ED" },
+  { id: "aws", name: "AWS", color: "#FF9900" },
+  { id: "gcp", name: "GCP", color: "#4285F4" },
+  { id: "graphql", name: "GraphQL", color: "#E10098" },
+  { id: "tailwind", name: "Tailwind CSS", color: "#06B6D4" },
+];
+
+const { sectionId = "stack", heading = "Tech Stack", items = defaults } = Astro.props;
+---
+
+<section
+  id={sectionId}
+  class="section-container section-padding relative py-24 sm:py-32 lg:py-40"
+  data-reveal
+>
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-4 flex items-center gap-3">
+      <span class="h-px w-8 bg-cyan-400/60" aria-hidden="true" />
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
+        {heading}
+      </span>
+    </div>
+
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="text-balance text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
+        Technologies we
+        <br />
+        <span class="gradient-text">ship with daily.</span>
+      </h2>
+      <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
+        Battle-tested tools across the stack — from kernel to browser.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6" data-reveal-stagger>
+      {
+        items.map((tech) => (
+          <div
+            class="group relative flex flex-col items-center gap-3 rounded-xl border border-zinc-800/40 bg-zinc-900/30 px-2 py-5 transition-all duration-300 hover:border-zinc-700/60 hover:bg-zinc-900/70 hover:shadow-[0_0_24px_rgba(34,211,238,0.05)] sm:px-3 sm:py-6"
+            data-tilt
+            data-reveal
+          >
+            <!-- Icon -->
+            <div class="flex h-10 w-10 items-center justify-center sm:h-12 sm:w-12">
+              {
+                tech.id === "php" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke={tech.color} stroke-width="1.2" opacity="0.4" />
+                    <text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" fill={tech.color} font-family="system-ui">PHP</text>
+                  </svg>
+                )
+              }
+              {
+                tech.id === "symfony" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke={tech.color} stroke-width="1.2" opacity="0.4" />
+                    <text x="12" y="15" text-anchor="middle" font-size="6" font-weight="700" fill="#fff" font-family="system-ui">SF</text>
+                  </svg>
+                )
+              }
+              {
+                tech.id === "react" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.2">
+                    <circle cx="12" cy="12" r="2.2" />
+                    <ellipse cx="12" cy="12" rx="7.5" ry="2.8" transform="rotate(0 12 12)" />
+                    <ellipse cx="12" cy="12" rx="7.5" ry="2.8" transform="rotate(60 12 12)" />
+                    <ellipse cx="12" cy="12" rx="7.5" ry="2.8" transform="rotate(120 12 12)" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "typescript" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="3" stroke={tech.color} stroke-width="1.2" opacity="0.4" />
+                    <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="700" fill={tech.color} font-family="system-ui">TS</text>
+                  </svg>
+                )
+              }
+              {
+                tech.id === "mysql" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.3">
+                    <ellipse cx="12" cy="10" rx="7" ry="3" />
+                    <path d="M5 10v4c0 1.657 3.134 3 7 3s7-1.343 7-3v-4" />
+                    <path d="M5 14v4c0 1.657 3.134 3 7 3s7-1.343 7-3v-4" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "postgresql" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none">
+                    <ellipse cx="12" cy="10" rx="7" ry="3" stroke={tech.color} stroke-width="1.2" />
+                    <path d="M5 10v4c0 1.657 3.134 3 7 3s7-1.343 7-3v-4" stroke={tech.color} stroke-width="1.2" />
+                    <text x="12" y="14" text-anchor="middle" font-size="6.5" font-weight="700" fill={tech.color} font-family="system-ui">PG</text>
+                  </svg>
+                )
+              }
+              {
+                tech.id === "redis" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.3">
+                    <path d="M6 16L12 19L18 16" opacity="0.5" />
+                    <path d="M6 12L12 15L18 12" />
+                    <path d="M6 8L12 11L18 8" />
+                    <path d="M12 3L18 6L12 9L6 6L12 3Z" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "docker" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.3">
+                    <rect x="3" y="11" width="4" height="4" rx="0.5" opacity="0.7" />
+                    <rect x="8" y="11" width="4" height="4" rx="0.5" opacity="0.7" />
+                    <rect x="13" y="11" width="4" height="4" rx="0.5" opacity="0.7" />
+                    <rect x="8" y="6" width="4" height="4" rx="0.5" opacity="0.7" />
+                    <rect x="13" y="6" width="4" height="4" rx="0.5" opacity="0.7" />
+                    <path d="M3 15v2.5a.5.5 0 0 0 .5.5h17a.5.5 0 0 0 .5-.5V15" />
+                    <path d="M19 10c0-1.5-2-2.5-3-3" opacity="0.5" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "aws" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.2">
+                    <path d="M3 16l4-2.5L11 16l4-2.5L19 16" />
+                    <path d="M3 11l4-2.5L11 11l4-2.5L19 11" />
+                    <path d="M3 6l4-2.5L11 6l4-2.5L19 6" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "gcp" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.2">
+                    <path d="M12 3c-2 0-3.5 1-4 2.5-2 .5-3.5 2-4 4-.5 2 .5 4 2 5.5" />
+                    <path d="M12 3c2 0 3.5 1 4 2.5 2 .5 3.5 2 4 4 .5 2 -.5 4-2 5.5" />
+                    <path d="M8 15c0 2 1.5 3.5 3.5 4 .5 1 1.5 1.5 2.5 1.5" />
+                    <path d="M6 11l5 4-5-2z" fill={tech.color} fill-opacity="0.3" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "graphql" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke={tech.color} stroke-width="1.3">
+                    <circle cx="12" cy="4.5" r="1.5" />
+                    <circle cx="12" cy="19.5" r="1.5" />
+                    <circle cx="4.5" cy="7.5" r="1.5" />
+                    <circle cx="19.5" cy="7.5" r="1.5" />
+                    <circle cx="4.5" cy="16.5" r="1.5" />
+                    <circle cx="19.5" cy="16.5" r="1.5" />
+                    <path d="M12 4.5L5.5 16.5" opacity="0.4" />
+                    <path d="M12 4.5L18.5 16.5" opacity="0.4" />
+                    <path d="M4.5 7.5L19.5 16.5" opacity="0.4" />
+                    <path d="M4.5 16.5L19.5 7.5" opacity="0.4" />
+                    <path d="M5.5 7.5L12 19.5" opacity="0.4" />
+                    <path d="M18.5 7.5L12 19.5" opacity="0.4" />
+                  </svg>
+                )
+              }
+              {
+                tech.id === "tailwind" && (
+                  <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-8 sm:w-8" fill="none">
+                    <path d="M6 13c.5-3 2.5-5 5.5-6C14 6 15 7.5 14.5 9c2-.5 3.5 0 4.5 1.5" stroke={tech.color} stroke-width="1.3" stroke-linecap="round" />
+                    <path d="M4 16c.5-3 2.5-5 5.5-6C12 9 13 10.5 12.5 12c2-.5 3.5 0 4.5 1.5" stroke={tech.color} stroke-width="1.3" stroke-linecap="round" opacity="0.6" />
+                  </svg>
+                )
+              }
+            </div>
+
+            <!-- Label -->
+            <span class="text-xs font-medium text-zinc-500 transition-colors duration-200 group-hover:text-zinc-300">
+              {tech.name}
+            </span>
+
+            <!-- Hover brand-color dot -->
+            <span
+              class="absolute -top-px left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full transition-all duration-300 group-hover:w-8"
+              style="background-color: {tech.color}"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
