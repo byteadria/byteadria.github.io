@@ -25,17 +25,25 @@ const canonicalURL = Astro.url;
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Inter font with high fetchpriority -->
+    <!-- Space Grotesk (headings) + Inter (body) + JetBrains Mono (code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-zinc-950 text-zinc-200 antialiased">
+  <body class="relative min-h-screen bg-zinc-950 text-zinc-200 antialiased">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute inset-0 bg-grid-dense opacity-40" />
+      <div class="absolute inset-0 bg-noise" />
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 h-[80vh] w-full max-w-5xl opacity-[0.04]"
+        style="background: radial-gradient(ellipse 60% 50% at 50% 0%, #22d3ee, transparent)"
+      />
+    </div>
     <a href="#main-content" class="skip-link" tabindex="1">
       Skip to content
     </a>
@@ -62,7 +70,7 @@ const canonicalURL = Astro.url;
       </div>
     </div>
 
-    <main id="main-content">
+    <main id="main-content" style="isolation: isolate">
       <slot />
     </main>
 
@@ -94,33 +102,40 @@ const canonicalURL = Astro.url;
           });
         }
 
-        // ─── Nav active section tracking ────────────────────────────────
+        // ─── Nav active section tracking (scroll spy via RAF) ──────────
         const navLinks = document.querySelectorAll("[data-nav-link]");
         const sections = document.querySelectorAll("section[id]");
 
-        if (navLinks.length && sections.length) {
-          const sectionObserver = new IntersectionObserver(
-            (entries) => {
-              let active = "";
-              for (const entry of entries) {
-                if (entry.isIntersecting) {
-                  active = entry.target.id;
-                }
-              }
-              if (active) {
-                for (const link of navLinks) {
-                  const target = link.getAttribute("href")?.replace("#", "");
-                  link.classList.toggle("active", target === active);
-                }
-              }
-            },
-            { threshold: 0.2, rootMargin: "-80px 0px -60% 0px" }
-          );
+        function updateActiveSection() {
+          const scrollPos = window.scrollY + 96; // 80px offset (navbar + buffer)
+
+          let activeId = "";
 
           for (const section of sections) {
-            sectionObserver.observe(section);
+            const top = section.getBoundingClientRect().top + window.scrollY;
+            if (top <= scrollPos) {
+              activeId = section.id;
+            }
+          }
+
+          for (const link of navLinks) {
+            const target = link.getAttribute("href")?.replace("#", "");
+            link.classList.toggle("active", target === activeId);
           }
         }
+
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              updateActiveSection();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+
+        updateActiveSection();
 
         // ─── Tilt effect (RAF-throttled) ────────────────────────────────
         let tiltCard = null;
@@ -177,10 +192,10 @@ const canonicalURL = Astro.url;
         };
 
         const cmdSections = [
+          { id: "services", label: "Services" },
+          { id: "why-us", label: "Why GitByte DOO" },
           { id: "work", label: "Work" },
           { id: "stack", label: "Tech Stack" },
-          { id: "services", label: "Services" },
-          { id: "why-us", label: "Why Forge Systems" },
           { id: "about", label: "About" },
           { id: "contact", label: "Contact" },
         ];

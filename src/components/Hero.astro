@@ -6,26 +6,26 @@ export interface Props {
 }
 
 const {
-  upworkHref = "https://upwork.com",
+  upworkHref = "https://upwork.com/freelancers/~016c054e2db68a3319?mp_source=share",
   workAnchor = "#work",
-  brandName = "Forge Systems",
+  brandName = "GitByte DOO",
 } = Astro.props;
 ---
 
 <section
-  class="relative flex min-h-svh items-center overflow-hidden bg-zinc-950"
+  class="relative flex min-h-svh items-center overflow-hidden"
   aria-label="Hero"
 >
   <!-- Animated background -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute inset-0 bg-grid" />
+    <div class="absolute inset-0 bg-grid opacity-60" />
     <div class="absolute inset-0 bg-noise" />
     <div
-      class="animate-drift absolute -left-[25%] -top-[25%] h-[150%] w-[150%] opacity-25"
+      class="animate-drift absolute -left-[25%] -top-[25%] h-[150%] w-[150%] opacity-30"
       style="
         background: radial-gradient(
           ellipse 60% 50% at 30% 40%,
-          rgba(34, 211, 238, 0.15),
+          rgba(34, 211, 238, 0.12),
           transparent 70%
         );
       "
@@ -35,82 +35,54 @@ const {
       style="
         background: radial-gradient(
           ellipse 50% 60% at 70% 60%,
-          rgba(34, 211, 238, 0.1),
+          rgba(34, 211, 238, 0.08),
           transparent 70%
         );
       "
     />
-    <div
-      class="absolute left-1/2 top-1/2 h-[50vh] w-[50vh] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-3xl"
-      style="background: radial-gradient(circle, #22d3ee, transparent 70%)"
-    />
   </div>
 
   <div
-    class="mx-auto flex w-full max-w-7xl flex-col items-center px-4 pt-28 pb-16 text-center sm:px-6 sm:pt-32 lg:px-8"
+    class="mx-auto flex w-full max-w-7xl flex-col items-center px-4 pt-28 pb-20 text-center sm:px-6 sm:pt-32 lg:px-8 lg:pb-28"
   >
-    <!-- Availability chip -->
+    <!-- Availability -->
     <div
-      class="animate-fade-in-down mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-4 py-1.5 text-xs font-medium text-zinc-400 sm:mb-8"
+      class="animate-fade-in-down mb-8 inline-flex items-center gap-3 sm:mb-10"
     >
-      <span class="relative flex h-1.5 w-1.5">
-        <span
-          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400/60"
-        />
-        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-4 py-1.5 text-xs font-medium text-zinc-400"
+      >
+        <span class="relative flex h-1.5 w-1.5">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400/60"
+          />
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
+        </span>
+        Now engaging for new projects
       </span>
-      Available for new projects
     </div>
 
     <p
-      class="animate-fade-in-down mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-500 sm:mb-6"
+      class="animate-fade-in-down mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-500"
       style="animation-delay: 0.05s"
     >
       {brandName}
     </p>
 
     <h1
-      class="animate-fade-in text-balance text-5xl font-extrabold leading-[1.05] tracking-tight text-zinc-100 sm:text-7xl lg:text-8xl xl:text-9xl"
+      class="animate-fade-in heading-xl text-balance text-zinc-100"
       style="animation-delay: 0.1s"
     >
-      Engineering-grade&nbsp;teams
-      <br class="hidden sm:block" />
-      building
-      <span class="gradient-text"> scalable, </span>
-      <br class="block sm:hidden" />
-      high-performance
-      <br class="hidden sm:block" />
-      systems
-      <br class="block sm:hidden" />
-      for ambitious&nbsp;products.
+      Billing, APIs, and data
+      <br />
+      <span class="gradient-text">systems for SaaS.</span>
     </h1>
 
     <p
-      class="animate-fade-in-up mx-auto mt-6 max-w-3xl text-balance text-base leading-relaxed text-zinc-400 sm:mt-8 sm:text-lg lg:text-xl"
+      class="animate-fade-in-up mx-auto mt-6 max-w-2xl text-balance text-base leading-relaxed text-zinc-400 sm:mt-8 sm:text-lg"
       style="animation-delay: 0.2s"
-      role="list"
     >
-      <span class="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5">
-        <span class="inline-flex items-center gap-1.5" role="listitem">
-          <svg class="h-3.5 w-3.5 shrink-0 text-cyan-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-          Backend with Symfony/PHP
-        </span>
-        <span class="hidden sm:inline text-zinc-600" aria-hidden="true">•</span>
-        <span class="inline-flex items-center gap-1.5" role="listitem">
-          <svg class="h-3.5 w-3.5 shrink-0 text-cyan-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-          Modern React frontends
-        </span>
-        <span class="hidden sm:inline text-zinc-600" aria-hidden="true">•</span>
-        <span class="inline-flex items-center gap-1.5" role="listitem">
-          <svg class="h-3.5 w-3.5 shrink-0 text-cyan-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-          Expert system architecture
-        </span>
-        <span class="hidden sm:inline text-zinc-600" aria-hidden="true">•</span>
-        <span class="inline-flex items-center gap-1.5" role="listitem">
-          <svg class="h-3.5 w-3.5 shrink-0 text-cyan-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
-          Bulletproof integrations
-        </span>
-      </span>
+      Senior-led engineering studio. Subscription infrastructure, API integrations, and data workflows — on <strong class="text-zinc-200">Symfony and Laravel</strong>.
     </p>
 
     <div
@@ -121,7 +93,8 @@ const {
         href={upworkHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="group inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-cyan-400 px-8 text-sm font-semibold text-zinc-950 transition-all duration-200 hover:bg-cyan-300 active:scale-[0.97] sm:w-auto"
+        class="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-xl bg-cyan-400 px-8 text-sm font-semibold text-zinc-950 transition-colors duration-200 hover:bg-cyan-300 active:scale-[0.97] sm:w-auto"
+        style="min-height: 3.25rem"
       >
         <svg
           class="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5"
@@ -137,49 +110,50 @@ const {
             d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
           />
         </svg>
-        Hire us on Upwork
+        Start a project
       </a>
       <a
-        href={workAnchor}
-        class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-zinc-800 px-8 text-sm font-semibold text-zinc-300 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900 active:scale-[0.97] sm:w-auto"
+        href={upworkHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-13 w-full items-center justify-center gap-2 rounded-xl border border-zinc-800 px-8 text-sm font-semibold text-zinc-300 transition-colors duration-200 hover:border-zinc-700 hover:bg-zinc-900 active:scale-[0.97] sm:w-auto"
+        style="min-height: 3.25rem"
       >
-        See our work
+        View on Upwork
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
         </svg>
       </a>
     </div>
 
+    <!-- Proof row: hard metrics + GitHub link -->
     <div
-      class="animate-fade-in-up mx-auto mt-16 flex w-full max-w-2xl flex-col items-center gap-6 border-t border-zinc-800/40 pt-8 sm:mt-20 sm:pt-10"
+      class="animate-fade-in-up mx-auto mt-20 w-full max-w-3xl"
       style="animation-delay: 0.5s"
     >
-      <p class="text-xs font-medium uppercase tracking-[0.15em] text-zinc-600">
-        Trusted by product teams at
-      </p>
-      <div
-        class="flex w-full flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm font-medium text-zinc-600"
-      >
-        <span class="text-zinc-500 transition-colors hover:text-zinc-300">GrowthOS</span>
-        <span class="text-zinc-500 transition-colors hover:text-zinc-300">Pulse Analytics</span>
-        <span class="text-zinc-500 transition-colors hover:text-zinc-300">Rivet Health</span>
-        <span class="text-zinc-500 transition-colors hover:text-zinc-300">Streamforge</span>
-      </div>
-      <div class="flex items-center gap-8 text-xs text-zinc-700">
-        <span class="flex items-center gap-1.5">
-          <span class="text-zinc-400 font-semibold">15+</span>
-          years experience
-        </span>
-        <span class="h-3 w-px bg-zinc-800" aria-hidden="true" />
-        <span class="flex items-center gap-1.5">
-          <span class="text-zinc-400 font-semibold">40+</span>
-          projects shipped
-        </span>
-        <span class="h-3 w-px bg-zinc-800" aria-hidden="true" />
-        <span class="flex items-center gap-1.5">
-          <span class="text-zinc-400 font-semibold">100%</span>
-          on-time delivery
-        </span>
+      <div class="grid grid-cols-3 gap-6 border-t border-zinc-800/40 pt-8 sm:gap-12 sm:pt-10">
+        <div class="text-center">
+          <p class="text-xl font-bold text-zinc-100 sm:text-2xl">7+</p>
+          <p class="mt-1 text-xs text-zinc-600">years of engineering experience</p>
+        </div>
+        <div class="text-center">
+          <p class="text-xl font-bold text-zinc-100 sm:text-2xl">UTC+1/+2</p>
+          <p class="mt-1 text-xs text-zinc-600">cross-timezone delivery</p>
+        </div>
+        <div class="text-center">
+          <p class="text-xl font-bold text-zinc-100 sm:text-2xl">
+            <a
+              href="https://github.com/byteadria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 transition-colors hover:text-cyan-400"
+            >
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </p>
+          <p class="mt-1 text-xs text-zinc-600">open source profile</p>
+        </div>
       </div>
     </div>
   </div>

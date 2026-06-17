@@ -26,9 +26,51 @@
   :target {
     scroll-margin-top: 5rem;
   }
+
+  /* Section transition glow */
+  section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 640px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(34, 211, 238, 0.08),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  section:last-of-type::after {
+    display: none;
+  }
 }
 
 @layer components {
+  /* ─── Typography scale ──────────────────────────────
+       H1 (Hero)     → Space Grotesk 700, -0.03em tracking
+       H2 (Section)  → Space Grotesk 600, -0.02em tracking
+       H3 (Card)     → Space Grotesk 600, -0.01em tracking
+       Body          → Inter 400/500, 1.6 line-height
+  */
+  .heading-xl {
+    @apply font-heading text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[1.05] tracking-[-0.03em];
+  }
+  .heading-lg {
+    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.15] tracking-[-0.02em];
+  }
+  .heading {
+    @apply font-heading text-lg font-semibold tracking-[-0.01em];
+  }
+  .heading-sm {
+    @apply font-heading text-sm font-semibold;
+  }
+
   .glass {
     @apply border border-zinc-800/50 bg-zinc-900/60 backdrop-blur-xl;
   }
@@ -39,6 +81,10 @@
 
   .gradient-text {
     @apply bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-subtle {
+    @apply bg-gradient-to-r from-cyan-300/80 via-cyan-400/80 to-cyan-300/80 bg-clip-text text-transparent;
   }
 
   .gradient-border {
@@ -89,6 +135,18 @@
     @apply mx-auto max-w-7xl;
   }
 
+  .section-label {
+    @apply mb-4 flex items-center gap-3;
+  }
+
+  .section-label-line {
+    @apply h-px w-8 bg-cyan-400/60;
+  }
+
+  .section-label-text {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/80;
+  }
+
   /* Scroll reveal */
   [data-reveal] {
     opacity: 0;
@@ -110,21 +168,56 @@
   [data-reveal-delay="6"] { transition-delay: 0.6s; }
   [data-reveal-delay="7"] { transition-delay: 0.7s; }
 
-  /* Tilt cards */
+  /* Tilt cards — rendering hints only (transition set in combined rule below) */
   [data-tilt] {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
     backface-visibility: hidden;
   }
 
-  /* Nav active indicator */
+  /* Combined: reveal + tilt + hover transitions (higher specificity wins) */
+  [data-reveal][data-tilt] {
+    transition: 
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  /* Nav link: hover underline + active indicator */
+  .nav-link {
+    cursor: pointer;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    width: 0;
+    height: 1px;
+    background-color: rgba(161, 161, 170, 0.4);
+    transition: width 0.25s ease, background-color 0.25s ease, height 0.25s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 1.25rem;
+    height: 1.5px;
+    background-color: rgba(161, 161, 170, 0.7);
+  }
+
   .nav-link.active {
     @apply text-zinc-100;
   }
 
   .nav-link.active::after {
-    content: "";
-    @apply absolute -bottom-[13px] left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-cyan-400;
+    width: 1.25rem;
+    height: 2px;
+    background-color: #22d3ee;
   }
 
   /* Command palette */
@@ -188,6 +281,11 @@
   .skip-link {
     @apply fixed left-4 top-4 z-[200] -translate-y-20 rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-zinc-950 transition-transform duration-200 focus-visible:translate-y-0;
   }
+
+  /* Upwork badge */
+  .upwork-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-green-800/40 bg-green-900/20 px-3 py-1 text-xs font-medium text-green-400;
+  }
 }
 
 @layer utilities {
@@ -200,6 +298,13 @@
       linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
     background-size: 64px 64px;
+  }
+
+  .bg-grid-dense {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
   .bg-noise {
@@ -215,6 +320,24 @@
       ellipse 80% 50% at 50% -20%,
       rgba(34, 211, 238, 0.12),
       transparent
+    );
+  }
+
+  .bg-glow-strong {
+    background: radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      rgba(34, 211, 238, 0.15),
+      transparent
+    );
+  }
+
+  .bg-gradient-section {
+    background: linear-gradient(
+      180deg,
+      rgba(34, 211, 238, 0.03) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(34, 211, 238, 0.03) 100%
     );
   }
 }

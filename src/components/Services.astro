@@ -16,35 +16,35 @@ export interface Props {
 const defaults: ServiceCard[] = [
   {
     icon: "server",
-    title: "Backend Systems",
+    title: "SaaS Backend Systems",
     description:
-      "Architected and built with Symfony, PHP 8.3+, and Doctrine ORM — delivering high-load monoliths and event-driven services that handle millions of requests without breaking a sweat.",
-    highlights: ["Symfony 6/7", "PHP 8.3+", "Doctrine ORM", "High-load architecture", "Message queues (RabbitMQ / Kafka)"],
-  },
-  {
-    icon: "window",
-    title: "Frontend Applications",
-    description:
-      "Pixel-perfect React and TypeScript interfaces built with modern tooling — server components, streaming SSR, and optimised bundles that ship fast and stay snappy under real-world conditions.",
-    highlights: ["React 18/19", "TypeScript", "Next.js / Remix", "Tailwind / CSS-in-JS", "Performance budgets"],
+      "Multi-tenant subscription engines with recurring billing, metered usage, and payment lifecycle management. Stripe webhooks reconciled through idempotent consumers; automated dunning, invoicing, and account state machine.",
+    highlights: ["Symfony", "Laravel", "Stripe", "MySQL"],
   },
   {
     icon: "plug",
-    title: "APIs & Integrations",
+    title: "API Architecture & Integration",
     description:
-      "Design-first REST and GraphQL APIs, webhook orchestrators, and third-party adapters that treat every integration as a first-class product — documented, tested, and observable out of the box.",
-    highlights: ["REST / GraphQL", "OpenAPI / AsyncAPI", "Microservices", "Stripe / Slack / Shopify", "Webhook infrastructure"],
+      "Versioned REST APIs with idempotent endpoints, retry-with-backoff, and signed webhook verification. Middleware connecting SaaS platforms to payment gateways, CRMs, and external services through documented contracts.",
+    highlights: ["API design", "Stripe", "Webhooks", "Third-party APIs"],
   },
   {
     icon: "gauge",
-    title: "Performance & Architecture",
+    title: "Performance & Scaling",
     description:
-      "Deep-dive system audits, load-testing regimens, and full-architecture overhauls that uncover bottlenecks and re-architect for scale — from database indexing to CDN caching strategies.",
-    highlights: ["System design audits", "Load & stress testing", "Database optimisation", "Caching strategies (Redis / Varnish)", "Scalability planning"],
+      "Query optimization under load, caching layers with invalidation strategies, and connection pooling for PHP backends. Legacy codebase refactoring with minimized operational risk.",
+    highlights: ["SQL optimisation", "Caching", "PHP refactoring", "Legacy modernisation"],
+  },
+  {
+    icon: "window",
+    title: "Product Interfaces",
+    description:
+      "React and TypeScript interfaces consuming backend APIs — admin panels, customer portals, and data dashboards authenticated and connected to PHP services.",
+    highlights: ["React", "TypeScript"],
   },
 ];
 
-const { sectionId = "services", heading = "Services", subheading = "Deep technical capability across the full stack.", cards = defaults } = Astro.props;
+const { sectionId = "services", heading = "Services", subheading = "Architecture design through to deployment. We own the full delivery loop.", cards = defaults } = Astro.props;
 ---
 
 <section
@@ -62,10 +62,10 @@ const { sectionId = "services", heading = "Services", subheading = "Deep technic
     </div>
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-      <h2 class="text-balance text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
-        Engineering services
+      <h2 class="heading-lg text-balance text-zinc-100">
+        What
         <br />
-        <span class="gradient-text">without the fluff.</span>
+        <span class="gradient-text">we build.</span>
       </h2>
       <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
         {subheading}
@@ -77,7 +77,7 @@ const { sectionId = "services", heading = "Services", subheading = "Deep technic
       {
         cards.map((card) => (
           <article
-            class="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/40 p-6 transition-all duration-300 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] sm:p-7"
+            class="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/40 p-6 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] active:brightness-90 sm:p-7"
             data-tilt
             data-reveal
           >
@@ -116,7 +116,7 @@ const { sectionId = "services", heading = "Services", subheading = "Deep technic
             </div>
 
             <!-- Card content -->
-            <h3 class="text-lg font-semibold tracking-tight text-zinc-100">
+            <h3 class="heading text-zinc-100">
               {card.title}
             </h3>
             <p class="mt-2 text-sm leading-relaxed text-zinc-400">

@@ -14,37 +14,43 @@ export interface Props {
 const defaults: WhyItem[] = [
   {
     icon: "users",
-    title: "Senior-only team",
+    title: "Direct engineering access",
     description:
-      "Every contributor is a staff-level engineer with 10+ years shipping production systems. No juniors, no delegation chains — just experienced judgment from day one.",
+      "No account managers, no hand-offs. The engineer who designs your system builds it and deploys it. One point of contact from architecture through production.",
   },
   {
     icon: "lightbulb",
-    title: "Product-minded engineers",
+    title: "Architecture-first delivery",
     description:
-      "We don't just code — we understand your users, your market, and your trade-offs. Expect architectural recommendations that consider business outcomes, not just tech debt.",
+      "Schema design, API contracts, and infrastructure choices precede every implementation. We plan in public and adjust as we learn — code follows the contract.",
   },
   {
     icon: "target",
-    title: "End-to-end ownership",
+    title: "Production experience",
     description:
-      "From whiteboard sketches to production monitoring and incident response, we own the full lifecycle. You get one point of contact, one standard of quality, end to end.",
+      "7+ years delivering backend systems for startups and SMEs in Europe and North America. SaaS platforms, payment systems, and API infrastructure running in production.",
   },
   {
     icon: "shield",
-    title: "Upwork Top Rated Plus",
+    title: "Long-term engagements",
     description:
-      "100% job success score with verified expertise and a track record of repeat engagements from funded startups to Fortune 500 teams. Enterprise-grade vetting, no enterprise overhead.",
+      "Clients come back because the work is solid. Repeat engagements and referrals drive our pipeline — not marketing. We work on core systems, not one-off tasks.",
   },
   {
     icon: "zap",
-    title: "No-nonsense process",
+    title: "Remote-native workflow",
     description:
-      "Slack-first communication, weekly deliverables, and zero unnecessary meetings. We move fast because we respect your time as much as our own.",
+      "Based in Podgorica, Montenegro (UTC+1/+2). Async communication by default, scheduled syncs when needed. Comfortable across US, EU, and UK timezones.",
+  },
+  {
+    icon: "file-text",
+    title: "Clean production",
+    description:
+      "Systems designed for the engineer who maintains them next. Readable codebases, documented trade-offs, and architectures that don't need a rewrite when requirements shift.",
   },
 ];
 
-const { sectionId = "why-us", heading = "Why Forge Systems", items = defaults } = Astro.props;
+const { sectionId = "why-us", heading = "Why GitByte DOO", items = defaults } = Astro.props;
 ---
 
 <section
@@ -61,13 +67,13 @@ const { sectionId = "why-us", heading = "Why Forge Systems", items = defaults } 
     </div>
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-      <h2 class="text-balance text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
-        What makes us
+      <h2 class="heading-lg text-balance text-zinc-100">
+        Why work with
         <br />
-        <span class="gradient-text">different.</span>
+        <span class="gradient-text">us.</span>
       </h2>
       <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
-        Five principles that define how we work — and who we work with.
+        Direct engineering. Architecture-first. Production-tested.
       </p>
     </div>
 
@@ -75,7 +81,7 @@ const { sectionId = "why-us", heading = "Why Forge Systems", items = defaults } 
       {
         items.map((item) => (
           <div
-            class="flex flex-col gap-4 bg-zinc-950 p-6 transition-colors duration-200 hover:bg-zinc-900/80 sm:p-7 lg:p-8"
+            class="flex flex-col gap-4 bg-zinc-950 p-6 hover:bg-zinc-900/80 active:brightness-90 sm:p-7 lg:p-8"
             data-tilt
             data-reveal
           >
@@ -119,8 +125,15 @@ const { sectionId = "why-us", heading = "Why Forge Systems", items = defaults } 
                     </svg>
                   )
                 }
+                {
+                  item.icon === "file-text" && (
+                    <svg class="h-4 w-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    </svg>
+                  )
+                }
               </div>
-              <h3 class="text-sm font-semibold text-zinc-100">
+              <h3 class="heading-sm text-zinc-100">
                 {item.title}
               </h3>
             </div>
@@ -132,6 +145,11 @@ const { sectionId = "why-us", heading = "Why Forge Systems", items = defaults } 
           </div>
         ))
       }
+    </div>
+
+    <div class="mt-12 text-center">
+      <hr class="mx-auto mb-6 w-12 border-zinc-800" />
+      <span class="text-xs font-medium uppercase tracking-[0.15em] text-zinc-600">Architecture first. Production always.</span>
     </div>
   </div>
 </section>

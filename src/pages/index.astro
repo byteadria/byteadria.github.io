@@ -11,76 +11,83 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-  title="Forge Systems | Engineering-Grade Teams — Scalable Systems & Products"
-  description="High-end software development agency specializing in scalable backend architecture with Symfony/PHP, modern React frontends, expert system design, and bulletproof integrations."
+  title="GitByte DOO — Backend Engineering Studio | Symfony, Laravel, PHP"
+  description="Engineering studio specialising in backend systems for SaaS companies. Symfony, Laravel, PHP, and API architecture."
 >
   <Navbar />
 
   <Hero />
 
+  <Services />
+
+  <WhyUs />
+
   <!-- Work -->
-  <section id="work" class="section-container section-padding relative py-24 sm:py-32 lg:py-40" data-reveal>
+  <section id="work" class="section-container section-padding relative py-24 sm:py-32 lg:py-40 bg-gradient-section" data-reveal>
     <div class="mx-auto max-w-6xl">
-      <div class="mb-4 flex items-center gap-3">
-        <span class="h-px w-8 bg-cyan-400/60" aria-hidden="true" />
-        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Selected Work</span>
+      <div class="section-label">
+        <span class="section-label-line" aria-hidden="true" />
+        <span class="section-label-text">Selected Work</span>
       </div>
-      <h2 class="text-balance text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
-        Products we've shaped.
+      <h2 class="heading-lg text-balance text-zinc-100">
+        Systems we've built.
       </h2>
 
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
-        <article class="group glass rounded-2xl p-6 transition-all duration-300 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] sm:p-7" data-tilt data-reveal>
+        <article class="group glass rounded-2xl p-6 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] active:brightness-90 sm:p-7" data-tilt data-reveal>
           <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/10">
             <svg class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-100">Fintech Dashboard</h3>
+          <h3 class="heading text-zinc-100">SaaS Subscription Platform</h3>
           <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-            Real-time analytics platform handling 2M+ transactions daily.
-            React + Rust backend, sub-10ms p99 latency.
+            Recurring billing engine with metered pricing, dunning management, and
+            multi-tenant account isolation. Stripe webhooks reconciled via idempotent
+            consumers; automated invoice generation and email lifecycle.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Symfony</span>
             <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">React</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Rust</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Postgres</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Stripe</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">MySQL</span>
           </div>
         </article>
 
-        <article class="group glass rounded-2xl p-6 transition-all duration-300 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] sm:p-7" data-tilt data-reveal>
+        <article class="group glass rounded-2xl p-6 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] active:brightness-90 sm:p-7" data-tilt data-reveal>
           <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/10">
             <svg class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-100">AI SaaS Platform</h3>
+          <h3 class="heading text-zinc-100">Document Management CMS</h3>
           <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-            API-first ML inference platform serving 500K+ requests/hour.
-            Go + Python, distributed GPU scheduling.
+            Versioned template engine with server-side PDF rendering and fine-grained
+            role-based access. Laravel queue workers handle async document generation;
+            audit log trails every mutation.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Go</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Python</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">K8s</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Laravel</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">MySQL</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">PHP</span>
           </div>
         </article>
 
-        <article class="group glass rounded-2xl p-6 transition-all duration-300 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] sm:col-span-2 sm:p-7 lg:col-span-1" data-tilt data-reveal>
+        <article class="group glass rounded-2xl p-6 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] active:brightness-90 sm:col-span-2 sm:p-7 lg:col-span-1" data-tilt data-reveal>
           <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/10">
             <svg class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-100">E-Commerce Engine</h3>
+          <h3 class="heading text-zinc-100">Inventory Management API</h3>
           <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-            Headless commerce platform for a Fortune 500 retailer. 99.99% uptime,
-            sub-200ms global checkout.
+            RESTful API layer for multi-warehouse inventory, supplier coordination,
+            and order orchestration. Designed for ETL integration with legacy
+            warehouse systems via idempotent webhook contracts.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Next.js</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Node</span>
-            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Redis</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">Symfony</span>
+            <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">MySQL</span>
           </div>
         </article>
       </div>
@@ -88,67 +95,90 @@ import Footer from "../components/Footer.astro";
   </section>
 
   <TechStack />
-  <Services />
-  <WhyUs />
 
   <!-- About -->
   <section id="about" class="section-container section-padding relative py-24 sm:py-32 lg:py-40" data-reveal>
     <div class="mx-auto max-w-6xl">
-      <div class="mb-4 flex items-center gap-3">
-        <span class="h-px w-8 bg-cyan-400/60" aria-hidden="true" />
-        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">About us</span>
+      <div class="section-label">
+        <span class="section-label-line" aria-hidden="true" />
+        <span class="section-label-text">About</span>
       </div>
 
       <div class="grid items-center gap-16 lg:grid-cols-2">
         <div>
-          <h2 class="text-balance text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
-            Built by engineers,
+          <h2 class="heading-lg text-balance text-zinc-100">
+            Engineering studio.
             <br />
-            <span class="gradient-text">for product teams.</span>
+            <span class="gradient-text">Backend DNA.</span>
           </h2>
           <p class="mt-6 text-base leading-relaxed text-zinc-400">
-            We're a tight-knit team of senior engineers who've shipped at
-            companies like Stripe, Vercel, and Linear. We've scaled databases
-            past 10TB, designed APIs serving millions, and rebuilt frontends
-            that cut load times by 80%.
+            We're an engineering studio — not an agency with sales layers.
+            We work directly with technical founders and engineering teams.
           </p>
           <p class="mt-4 text-base leading-relaxed text-zinc-400">
-            We don't just write code — we partner with you to make the right
-            technical decisions, move fast without breaking things, and deliver
-            products that stand the test of production.
+            <strong class="text-zinc-300">Good fit:</strong> you need backend
+            infrastructure for a SaaS product — billing, APIs, data pipelines —
+            and you want clean architecture over quick fixes.
+            <br />
+            <strong class="text-zinc-300">Not a fit:</strong> you need a landing
+            page, mobile app, or brand design. We stay in our lane.
           </p>
-          <div class="mt-8 grid grid-cols-3 gap-8 border-y border-zinc-800/50 py-8">
-            <div>
-              <span class="text-2xl font-bold text-zinc-100">15+</span>
-              <p class="mt-1 text-xs text-zinc-500">Years combined experience</p>
-            </div>
-            <div>
-              <span class="text-2xl font-bold text-zinc-100">40+</span>
-              <p class="mt-1 text-xs text-zinc-500">Projects delivered</p>
-            </div>
-            <div>
-              <span class="text-2xl font-bold text-zinc-100">100%</span>
-              <p class="mt-1 text-xs text-zinc-500">Client satisfaction</p>
-            </div>
+          <p class="mt-4 text-base leading-relaxed text-zinc-400">
+            Our approach: schema before code. API contracts next.
+            Infrastructure decisions before implementation. Short delivery
+            cycles, clear acceptance criteria, and a production-ready handover.
+          </p>
+
+          <!-- Trust links -->
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="https://github.com/byteadria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-700 hover:bg-zinc-900"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub &rarr;
+            </a>
+            <a
+              href="https://linkedin.com/in/byteadria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-700 hover:bg-zinc-900"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn &rarr;
+            </a>
+            <a
+              href="https://upwork.com/freelancers/~016c054e2db68a3319?mp_source=share"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-700 hover:bg-zinc-900"
+            >
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+              </svg>
+              View on Upwork &rarr;
+            </a>
           </div>
         </div>
 
         <div class="glass gradient-border rounded-2xl p-8">
-          <blockquote class="text-base leading-relaxed text-zinc-300">
-            "Forge Systems completely transformed our infrastructure. They
-            redesigned our monolithic backend into a clean event-driven
-            architecture that handles 10x the traffic with half the cost.
-            Their attention to detail is unmatched."
-          </blockquote>
-          <div class="mt-6 flex items-center gap-4">
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 text-sm font-semibold text-zinc-400" aria-hidden="true">
-              SK
-            </div>
-            <div>
-              <p class="text-sm font-semibold text-zinc-200">Sarah Kim</p>
-              <p class="text-xs text-zinc-500">CTO, Pulse Analytics</p>
-            </div>
-          </div>
+          <h3 class="heading-sm text-zinc-100">Engineering principles</h3>
+          <ul class="mt-5 space-y-4">
+            <li class="flex gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-cyan-400/10 text-xs text-cyan-400">1</span>
+              <span class="text-sm text-zinc-400"><strong class="text-zinc-300">Schema before code</strong> &mdash; data model and API contracts first. Implementation follows a defined contract, not the reverse.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-cyan-400/10 text-xs text-cyan-400">2</span>
+              <span class="text-sm text-zinc-400"><strong class="text-zinc-300">Iterative delivery</strong> &mdash; short cycles with clear acceptance criteria. Your team reviews working systems, not specifications.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-cyan-400/10 text-xs text-cyan-400">3</span>
+              <span class="text-sm text-zinc-400"><strong class="text-zinc-300">Production handover</strong> &mdash; documented code, deployed infrastructure, and a codebase your team can maintain without us.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

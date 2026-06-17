@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        heading: ["Space Grotesk", "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       colors: {
         brand: {
@@ -20,12 +22,19 @@ export default {
           800: "#155e75",
           900: "#164e63",
         },
+        zinc: {
+          850: "#1e1e24",
+          925: "#121215",
+          950: "#0a0a0c",
+        },
       },
       animation: {
         "fade-in": "fade-in 0.8s ease-out forwards",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "fade-in-down": "fade-in-down 0.8s ease-out forwards",
+        "scale-in": "scale-in 0.5s ease-out forwards",
         shimmer: "shimmer 6s ease-in-out infinite",
+        pulse: "pulse 3s ease-in-out infinite",
       },
       keyframes: {
         "fade-in": {
@@ -39,6 +48,10 @@ export default {
         "fade-in-down": {
           "0%": { opacity: "0", transform: "translateY(-12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.96)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
         },
         shimmer: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
