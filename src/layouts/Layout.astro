@@ -75,6 +75,24 @@ const canonicalURL = Astro.url;
     </main>
 
     <script>
+      import mermaid from "mermaid";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          background: "transparent",
+          primaryColor: "#18181b",
+          primaryTextColor: "#e4e4e7",
+          primaryBorderColor: "#22d3ee33",
+          lineColor: "#22d3ee66",
+          secondaryColor: "#09090b",
+          tertiaryColor: "#27272a",
+          fontSize: "12px",
+        },
+      });
+    </script>
+
+    <script>
       (() => {
         // ─── Scroll reveal + stagger ────────────────────────────────────
         const revealObserver = new IntersectionObserver(
@@ -187,6 +205,10 @@ const canonicalURL = Astro.url;
           stack: "S",
           services: "Sv",
           "why-us": "W",
+          architecture: "Ar",
+          maturity: "M",
+          "case-studies": "CS",
+          "open-source": "OS",
           about: "A",
           contact: "C",
         };
@@ -195,7 +217,11 @@ const canonicalURL = Astro.url;
           { id: "services", label: "Services" },
           { id: "why-us", label: "Why GitByte DOO" },
           { id: "work", label: "Work" },
+          { id: "case-studies", label: "Case Studies" },
           { id: "stack", label: "Tech Stack" },
+          { id: "architecture", label: "Architecture" },
+          { id: "maturity", label: "Production Maturity" },
+          { id: "open-source", label: "Open Source" },
           { id: "about", label: "About" },
           { id: "contact", label: "Contact" },
         ];
@@ -290,7 +316,6 @@ const canonicalURL = Astro.url;
           if (e.target === overlay) closeCmd();
         });
 
-        document.getElementById("cmd-trigger")?.addEventListener("click", () => openCmd());
       })();
     </script>
   </body>

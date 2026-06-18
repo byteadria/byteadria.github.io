@@ -10,7 +10,7 @@ const {
   sectionId = "contact",
   upworkHref = "https://upwork.com/freelancers/~016c054e2db68a3319?mp_source=share",
   email = "hello.gitbyte@gmail.com",
-  web3formsKey = "03e1d391-8c07-4f26-a31c-d0ac631fe7ad" || "",
+  web3formsKey = "03e1d391-8c07-4f26-a31c-d0ac631fe7ad",
 } = Astro.props;
 ---
 
@@ -23,20 +23,20 @@ const {
     <!-- Section label -->
     <div class="section-label">
       <span class="section-label-line" aria-hidden="true" />
-      <span class="section-label-text">Let's work together</span>
+      <span class="section-label-text">Contact</span>
     </div>
 
     <div class="grid gap-16 lg:grid-cols-5">
       <!-- Left: headline + text -->
       <div class="lg:col-span-2">
         <h2 class="heading-lg text-balance text-zinc-100">
-          Describe your
+          Start a
           <br />
-          <span class="gradient-text">project.</span>
+          <span class="gradient-text">conversation.</span>
         </h2>
         <p class="mt-4 max-w-md text-sm leading-relaxed text-zinc-400">
-          Tell us what you're building. If it&rsquo;s in our lane, we&rsquo;ll
-          respond with a technical assessment within 48 hours.
+          Describe the system you're building. If it fits our practice, we'll
+          respond with a technical assessment within two days.
         </p>
 
         <!-- Quick contact strip -->
@@ -76,8 +76,8 @@ const {
         </div>
 
         <p class="mt-4 text-xs text-zinc-600">
-          <span class="text-cyan-400/70">&#10003;</span> We assess the fit before
-          committing. No obligation.
+          <span class="text-cyan-400/70">&#10003;</span> Technical assessment
+          before commitment.
         </p>
       </div>
 
@@ -87,7 +87,7 @@ const {
           <input type="hidden" name="access_key" value={web3formsKey} />
           <input type="hidden" name="subject" value="GitByte DOO &ndash; New SaaS inquiry" />
           <input type="hidden" name="redirect" value="" />
-          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
           <div class="grid gap-5 sm:grid-cols-2">
             <div>
               <label for="name" class="mb-1.5 block text-xs font-medium text-zinc-500">

@@ -74,15 +74,18 @@ test.describe("Command palette", () => {
   test("all navigation items are rendered in the palette", async ({ page }) => {
     await trigger(page).click();
     const items = cmdItems(page);
-    await expect(items).toHaveCount(6);
+    await expect(items).toHaveCount(9);
 
     const labels = await items.allTextContents();
     expect(labels[0]).toContain("Services");
     expect(labels[1]).toContain("Why GitByte DOO");
     expect(labels[2]).toContain("Work");
     expect(labels[3]).toContain("Tech Stack");
-    expect(labels[4]).toContain("About");
-    expect(labels[5]).toContain("Contact");
+    expect(labels[4]).toContain("Architecture");
+    expect(labels[5]).toContain("Production Maturity");
+    expect(labels[6]).toContain("Open Source");
+    expect(labels[7]).toContain("About");
+    expect(labels[8]).toContain("Contact");
   });
 
   test("typing filters palette items", async ({ page }) => {

@@ -16,35 +16,35 @@ export interface Props {
 const defaults: ServiceCard[] = [
   {
     icon: "server",
-    title: "SaaS Backend Systems",
+    title: "SaaS Infrastructure",
     description:
-      "Multi-tenant subscription engines with recurring billing, metered usage, and payment lifecycle management. Stripe webhooks reconciled through idempotent consumers; automated dunning, invoicing, and account state machine.",
+      "Multi-tenant subscription engines. Event-driven state machines manage billing, metered usage, and account lifecycle. Stripe webhooks reconciled through idempotent consumers. Dunning, invoicing, and payment workflows automated through deterministic service orchestration.",
     highlights: ["Symfony", "Laravel", "Stripe", "MySQL"],
   },
   {
     icon: "plug",
-    title: "API Architecture & Integration",
+    title: "API Architecture",
     description:
-      "Versioned REST APIs with idempotent endpoints, retry-with-backoff, and signed webhook verification. Middleware connecting SaaS platforms to payment gateways, CRMs, and external services through documented contracts.",
+      "Versioned REST APIs built on idempotent contracts. Retry-with-backoff, signed webhook verification, and content negotiation supporting JSON and legacy XML. Middleware connecting SaaS platforms to payment gateways, CRMs, and external services through documented, testable contracts.",
     highlights: ["API design", "Stripe", "Webhooks", "Third-party APIs"],
   },
   {
     icon: "gauge",
-    title: "Performance & Scaling",
+    title: "Performance Engineering",
     description:
-      "Query optimization under load, caching layers with invalidation strategies, and connection pooling for PHP backends. Legacy codebase refactoring with minimized operational risk.",
-    highlights: ["SQL optimisation", "Caching", "PHP refactoring", "Legacy modernisation"],
+      "Query optimisation under production load. Multi-layer caching with explicit invalidation. Connection pooling for PHP backends. Legacy system modernisation through measured structural improvement — no rewrites, no downtime, no regressions.",
+    highlights: ["SQL optimisation", "Caching", "Refactoring", "Legacy modernisation"],
   },
   {
     icon: "window",
-    title: "Product Interfaces",
+    title: "Contract-Driven Frontends",
     description:
-      "React and TypeScript interfaces consuming backend APIs — admin panels, customer portals, and data dashboards authenticated and connected to PHP services.",
+      "TypeScript and React interfaces consuming the same API contracts as third-party integrators. Admin panels, customer portals, and data dashboards. Business logic and authorisation remain server-side — frontends are consumers, not owners.",
     highlights: ["React", "TypeScript"],
   },
 ];
 
-const { sectionId = "services", heading = "Services", subheading = "Architecture design through to deployment. We own the full delivery loop.", cards = defaults } = Astro.props;
+const { sectionId = "services", heading = "Capabilities", subheading = "System design and implementation across the full backend stack.", cards = defaults } = Astro.props;
 ---
 
 <section
@@ -63,9 +63,9 @@ const { sectionId = "services", heading = "Services", subheading = "Architecture
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="heading-lg text-balance text-zinc-100">
-        What
+        System
         <br />
-        <span class="gradient-text">we build.</span>
+        <span class="gradient-text">capabilities.</span>
       </h2>
       <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
         {subheading}

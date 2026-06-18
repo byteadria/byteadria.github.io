@@ -14,43 +14,43 @@ export interface Props {
 const defaults: WhyItem[] = [
   {
     icon: "users",
-    title: "Direct engineering access",
+    title: "Direct engineering",
     description:
-      "No account managers, no hand-offs. The engineer who designs your system builds it and deploys it. One point of contact from architecture through production.",
+      "One principal engineer from architecture through production. The engineer who designs the system writes every line of code and deploys it to production. Direct communication with the person building your infrastructure.",
   },
   {
     icon: "lightbulb",
-    title: "Architecture-first delivery",
+    title: "Contract-first design",
     description:
-      "Schema design, API contracts, and infrastructure choices precede every implementation. We plan in public and adjust as we learn — code follows the contract.",
+      "Schema and API contracts are defined and reviewed before implementation begins. The contract drives development, not the reverse. Infrastructure decisions follow from the contract, not from assumptions.",
   },
   {
     icon: "target",
     title: "Production experience",
     description:
-      "7+ years delivering backend systems for startups and SMEs in Europe and North America. SaaS platforms, payment systems, and API infrastructure running in production.",
+      "Seven years building backend systems for SaaS companies across Europe and North America. Subscription platforms, payment infrastructure, and API systems running in production — not prototypes, not MVPs.",
   },
   {
     icon: "shield",
-    title: "Long-term engagements",
+    title: "Referral-driven practice",
     description:
-      "Clients come back because the work is solid. Repeat engagements and referrals drive our pipeline — not marketing. We work on core systems, not one-off tasks.",
+      "Clients return because the systems hold up under production load. Repeat engagements and referrals drive the pipeline — not outbound, not ads. Core infrastructure, not marketing sites.",
   },
   {
     icon: "zap",
-    title: "Remote-native workflow",
+    title: "Distributed operations",
     description:
-      "Based in Podgorica, Montenegro (UTC+1/+2). Async communication by default, scheduled syncs when needed. Comfortable across US, EU, and UK timezones.",
+      "Podgorica, Montenegro (UTC+1/+2). Async communication by default, scheduled synchronisation when the problem requires it. Coverage across US Eastern, Central European, and UK time zones.",
   },
   {
     icon: "file-text",
-    title: "Clean production",
+    title: "Sustainable codebases",
     description:
-      "Systems designed for the engineer who maintains them next. Readable codebases, documented trade-offs, and architectures that don't need a rewrite when requirements shift.",
+      "Designed for the engineer who maintains them next. Readable code, documented trade-offs, and architectures that accommodate changing requirements without structural rewrites. Production handover means the client's team can operate it independently.",
   },
 ];
 
-const { sectionId = "why-us", heading = "Why GitByte DOO", items = defaults } = Astro.props;
+const { sectionId = "why-us", heading = "Approach", items = defaults } = Astro.props;
 ---
 
 <section
@@ -68,12 +68,12 @@ const { sectionId = "why-us", heading = "Why GitByte DOO", items = defaults } = 
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="heading-lg text-balance text-zinc-100">
-        Why work with
+        How we
         <br />
-        <span class="gradient-text">us.</span>
+        <span class="gradient-text">build.</span>
       </h2>
       <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
-        Direct engineering. Architecture-first. Production-tested.
+        Contract-first design. Direct engineering. Production-proven systems.
       </p>
     </div>
 
@@ -149,7 +149,7 @@ const { sectionId = "why-us", heading = "Why GitByte DOO", items = defaults } = 
 
     <div class="mt-12 text-center">
       <hr class="mx-auto mb-6 w-12 border-zinc-800" />
-      <span class="text-xs font-medium uppercase tracking-[0.15em] text-zinc-600">Architecture first. Production always.</span>
+      <span class="text-xs font-medium uppercase tracking-[0.15em] text-zinc-600">Design. Contract. Implement. Deploy. Iterate.</span>
     </div>
   </div>
 </section>

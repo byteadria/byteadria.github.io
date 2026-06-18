@@ -75,17 +75,11 @@
     @apply border border-zinc-800/50 bg-zinc-900/60 backdrop-blur-xl;
   }
 
-  .glass-hover {
-    @apply transition-colors duration-300 hover:border-zinc-700/60 hover:bg-zinc-900/80;
-  }
 
   .gradient-text {
     @apply bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300 bg-clip-text text-transparent;
   }
 
-  .gradient-text-subtle {
-    @apply bg-gradient-to-r from-cyan-300/80 via-cyan-400/80 to-cyan-300/80 bg-clip-text text-transparent;
-  }
 
   .gradient-border {
     @apply relative;
@@ -111,21 +105,6 @@
     pointer-events: none;
   }
 
-  .shimmer-text {
-    @apply animate-shimmer;
-    background: linear-gradient(
-      90deg,
-      #f4f4f5 0%,
-      #22d3ee 25%,
-      #f4f4f5 50%,
-      #22d3ee 75%,
-      #f4f4f5 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
 
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8;
@@ -282,10 +261,23 @@
     @apply fixed left-4 top-4 z-[200] -translate-y-20 rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-zinc-950 transition-transform duration-200 focus-visible:translate-y-0;
   }
 
-  /* Upwork badge */
-  .upwork-badge {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-green-800/40 bg-green-900/20 px-3 py-1 text-xs font-medium text-green-400;
+    /* Mermaid diagram styling */
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
   }
+
+  .mermaid .label {
+    font-family: "JetBrains Mono", monospace;
+    color: #e4e4e7;
+  }
+
+  .mermaid .cluster-label text,
+  .mermaid .label text {
+    fill: #e4e4e7;
+  }
+
+
 }
 
 @layer utilities {
@@ -315,21 +307,7 @@
     mix-blend-mode: overlay;
   }
 
-  .bg-glow {
-    background: radial-gradient(
-      ellipse 80% 50% at 50% -20%,
-      rgba(34, 211, 238, 0.12),
-      transparent
-    );
-  }
 
-  .bg-glow-strong {
-    background: radial-gradient(
-      ellipse 60% 40% at 50% 0%,
-      rgba(34, 211, 238, 0.15),
-      transparent
-    );
-  }
 
   .bg-gradient-section {
     background: linear-gradient(
