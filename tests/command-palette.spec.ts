@@ -19,17 +19,6 @@ test.describe("Command palette", () => {
     await page.goto("/");
   });
 
-  test("trigger button is visible on desktop viewport", async ({ page }) => {
-    await expect(trigger(page)).toBeVisible();
-    await expect(trigger(page)).toHaveAttribute("aria-label", "Open navigation search (Ctrl+K)");
-  });
-
-  test("clicking button opens the palette", async ({ page }) => {
-    await expect(overlay(page)).not.toHaveClass(/open/);
-    await trigger(page).click();
-    await expect(overlay(page)).toHaveClass(/open/);
-  });
-
   test("keyboard shortcut Ctrl+K opens the palette", async ({ page }) => {
     await expect(overlay(page)).not.toHaveClass(/open/);
     await page.keyboard.press("Control+k");
@@ -43,14 +32,14 @@ test.describe("Command palette", () => {
   });
 
   test("Escape closes the palette", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await expect(overlay(page)).toHaveClass(/open/);
     await page.keyboard.press("Escape");
     await expect(overlay(page)).not.toHaveClass(/open/);
   });
 
   test("clicking outside (overlay backdrop) closes the palette", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await expect(overlay(page)).toHaveClass(/open/);
 
     // Click the overlay backdrop itself (not a child element)
@@ -59,37 +48,34 @@ test.describe("Command palette", () => {
   });
 
   test("Ctrl+K toggles palette when already open", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await expect(overlay(page)).toHaveClass(/open/);
     await page.keyboard.press("Control+k");
     await expect(overlay(page)).not.toHaveClass(/open/);
   });
 
   test("focus moves to input when palette opens", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await expect(overlay(page)).toHaveClass(/open/);
     await expect(input(page)).toBeFocused();
   });
 
   test("all navigation items are rendered in the palette", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     const items = cmdItems(page);
-    await expect(items).toHaveCount(9);
+    await expect(items).toHaveCount(6);
 
     const labels = await items.allTextContents();
-    expect(labels[0]).toContain("Services");
-    expect(labels[1]).toContain("Why GitByte DOO");
-    expect(labels[2]).toContain("Work");
+    expect(labels[0]).toContain("Work");
+    expect(labels[1]).toContain("Services");
+    expect(labels[2]).toContain("Why GitByte DOO");
     expect(labels[3]).toContain("Tech Stack");
-    expect(labels[4]).toContain("Architecture");
-    expect(labels[5]).toContain("Production Maturity");
-    expect(labels[6]).toContain("Open Source");
-    expect(labels[7]).toContain("About");
-    expect(labels[8]).toContain("Contact");
+    expect(labels[4]).toContain("About");
+    expect(labels[5]).toContain("Contact");
   });
 
   test("typing filters palette items", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await input(page).fill("stack");
     const items = cmdItems(page);
     await expect(items).toHaveCount(1);
@@ -97,14 +83,14 @@ test.describe("Command palette", () => {
   });
 
   test("unmatched query shows no-results message", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     await input(page).fill("zzznotfound");
     await expect(cmdItems(page)).toHaveCount(0);
     await expect(page.locator("#cmd-results")).toContainText("No results");
   });
 
   test("clicking a palette item scrolls to the target section", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
     const contactItem = cmdItems(page).filter({ hasText: "Contact" });
     await contactItem.click();
 
@@ -115,7 +101,8 @@ test.describe("Command palette", () => {
   });
 
   test("keyboard navigation: arrow down and enter selects an item", async ({ page }) => {
-    await trigger(page).click();
+    await page.keyboard.press("Control+k");
+    await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
@@ -126,13 +113,13 @@ test.describe("Command palette", () => {
     await expect(section).toBeInViewport();
   });
 
-  test("keyboard navigation: arrow up selects first item", async ({ page }) => {
-    await trigger(page).click();
+  test("keyboard navigation: arrow up selects last item", async ({ page }) => {
+    await page.keyboard.press("Control+k");
     await page.keyboard.press("ArrowUp");
     await page.keyboard.press("Enter");
 
     await expect(overlay(page)).not.toHaveClass(/open/);
-    const section = page.locator("section#services");
+    const section = page.locator("section#contact");
     await expect(section).toBeInViewport();
   });
 });
