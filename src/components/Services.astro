@@ -2,7 +2,7 @@
 export interface ServiceCard {
   icon: string;
   title: string;
-  description: string;
+  label: string;
   highlights: string[];
 }
 
@@ -17,34 +17,30 @@ const defaults: ServiceCard[] = [
   {
     icon: "server",
     title: "SaaS Infrastructure",
-    description:
-      "Multi-tenant subscription engines. Event-driven state machines manage billing, metered usage, and account lifecycle. Stripe webhooks reconciled through idempotent consumers. Dunning, invoicing, and payment workflows automated through deterministic service orchestration.",
-    highlights: ["Symfony", "Laravel", "Stripe", "MySQL"],
+    label: "Subscription billing & metering",
+    highlights: ["Symfony", "Stripe", "MySQL"],
   },
   {
     icon: "plug",
     title: "API Architecture",
-    description:
-      "Versioned REST APIs built on idempotent contracts. Retry-with-backoff, signed webhook verification, and content negotiation supporting JSON and legacy XML. Middleware connecting SaaS platforms to payment gateways, CRMs, and external services through documented, testable contracts.",
-    highlights: ["API design", "Stripe", "Webhooks", "Third-party APIs"],
+    label: "RESTful & webhook contracts",
+    highlights: ["API design", "Webhooks"],
   },
   {
     icon: "gauge",
     title: "Performance Engineering",
-    description:
-      "Query optimisation under production load. Multi-layer caching with explicit invalidation. Connection pooling for PHP backends. Legacy system modernisation through measured structural improvement — no rewrites, no downtime, no regressions.",
-    highlights: ["SQL optimisation", "Caching", "Refactoring", "Legacy modernisation"],
+    label: "SQL & caching optimisation",
+    highlights: ["SQL", "Caching"],
   },
   {
     icon: "window",
     title: "Contract-Driven Frontends",
-    description:
-      "TypeScript and React interfaces consuming the same API contracts as third-party integrators. Admin panels, customer portals, and data dashboards. Business logic and authorisation remain server-side — frontends are consumers, not owners.",
+    label: "Typed React dashboards",
     highlights: ["React", "TypeScript"],
   },
 ];
 
-const { sectionId = "services", heading = "Capabilities", subheading = "System design and implementation across the full backend stack.", cards = defaults } = Astro.props;
+const { sectionId = "services", heading = "Capabilities", subheading = "What I do day to day.", cards = defaults } = Astro.props;
 ---
 
 <section
@@ -52,7 +48,6 @@ const { sectionId = "services", heading = "Capabilities", subheading = "System d
   class="section-container section-padding relative py-24 sm:py-32 lg:py-40"
   data-reveal
 >
-  <!-- Section header -->
   <div class="mx-auto max-w-6xl">
     <div class="mb-4 flex items-center gap-3">
       <span class="h-px w-8 bg-cyan-400/60" aria-hidden="true" />
@@ -72,70 +67,212 @@ const { sectionId = "services", heading = "Capabilities", subheading = "System d
       </p>
     </div>
 
-    <!-- Card grid -->
-    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
       {
-        cards.map((card) => (
+        cards.map((card, i) => (
           <article
-            class="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/40 p-6 hover:border-cyan-400/20 hover:bg-zinc-900/80 hover:shadow-[0_0_32px_rgba(34,211,238,0.06)] active:brightness-90 sm:p-7"
-            data-tilt
+            class="group relative cursor-pointer rounded-2xl border border-zinc-800/40 bg-zinc-900/30 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700/50 hover:bg-zinc-900/60 hover:shadow-[0_0_32px_rgba(34,211,238,0.04)] active:brightness-90"
             data-reveal
+            data-si={i}
           >
-            <!-- Icon -->
             <div
-              class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/10 transition-colors duration-300 group-hover:bg-cyan-400/15"
+              class="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/10 transition-colors duration-300 group-hover:bg-cyan-400/15"
             >
               {
                 card.icon === "server" && (
-                  <svg class="h-5 w-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "window" && (
-                  <svg class="h-5 w-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
                   </svg>
                 )
               }
               {
                 card.icon === "plug" && (
-                  <svg class="h-5 w-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "gauge" && (
-                  <svg class="h-5 w-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
                   </svg>
                 )
               }
             </div>
 
-            <!-- Card content -->
             <h3 class="heading text-zinc-100">
               {card.title}
             </h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-              {card.description}
-            </p>
 
-            <!-- Technology highlights -->
-            <ul class="mt-5 flex flex-wrap gap-1.5">
+            <span class="mt-1 block text-xs leading-relaxed text-zinc-600">
+              {card.label}
+            </span>
+
+            <ul class="mt-4 flex flex-wrap gap-x-2.5 gap-y-1">
               {
                 card.highlights.map((tag) => (
-                  <li class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500 transition-colors duration-200 group-hover:border-zinc-700/60 group-hover:text-zinc-400">
+                  <li class="text-[10px] font-medium tracking-wide text-zinc-600 transition-colors duration-200 group-hover:text-zinc-500">
                     {tag}
                   </li>
                 ))
               }
             </ul>
+            <span class="mt-3 inline-flex items-center gap-1 text-[10px] text-zinc-700 transition-all duration-200 group-hover:text-zinc-500">
+              Click for details <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
+            </span>
           </article>
         ))
       }
     </div>
   </div>
 </section>
+
+<!-- Service modal -->
+<div
+  id="service-modal"
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="service-modal-title"
+>
+  <div class="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" data-service-close></div>
+  <div class="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-zinc-800 bg-zinc-900 p-8 shadow-2xl">
+    <button
+      class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-zinc-300"
+      data-service-close
+      aria-label="Close"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div id="service-modal-body"></div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const modal = document.getElementById("service-modal");
+    const body = document.getElementById("service-modal-body");
+    const triggers = document.querySelectorAll("[data-si]");
+    const closes = modal.querySelectorAll("[data-service-close]");
+
+    const services = [
+      {
+        title: "SaaS Infrastructure",
+        summary: "Multi-tenant subscription engines built on idempotent consumers with metered billing, automated dunning, and Stripe reconciliation. Designed to handle growth from first customer to enterprise scale without structural rewrites.",
+        capabilities: [
+          "Metered and tiered billing with usage tracking",
+          "Subscription lifecycle orchestration (trials, upgrades, downgrades, cancellations)",
+          "Idempotent Stripe webhook consumers eliminating duplicate charges",
+          "Multi-tenant data isolation at the database level",
+        ],
+        integration: "Works alongside existing billing systems or greenfield. RESTful APIs expose subscription state, customer data, and invoice history for frontend or third-party consumption. Webhook contracts integrate with CRM, analytics, and accounting tools.",
+        constraints: "Idempotency guarantees require careful consumer design. Multi-tenant isolation adds per-query overhead. Dunning timing must account for multiple time zones and billing cycles.",
+        tags: ["Symfony", "Stripe", "MySQL"],
+      },
+      {
+        title: "API Architecture",
+        summary: "Versioned REST APIs that treat every integration as a first-class contract. Webhook verification, content negotiation, and backward-compatible evolution patterns ensure integrators can upgrade on their timeline.",
+        capabilities: [
+          "Versioned contract-first API design",
+          "Webhook dispatch with signature verification and retry logic",
+          "Content negotiation (JSON, XML, CSV) per endpoint",
+          "Third-party API integration with rate limiting and circuit breakers",
+        ],
+        integration: "APIs are self-documenting with OpenAPI specs generated from the contract definitions. Webhook delivery guarantees exactly-once semantics via idempotency keys. Integration tests validate contract compliance before deployment.",
+        constraints: "Backward compatibility requires disciplined versioning. Webhook reliability depends on consumer idempotency. Rate limiting must balance protection with legitimate throughput.",
+        tags: ["API design", "Webhooks"],
+      },
+      {
+        title: "Performance Engineering",
+        summary: "SQL optimisation, multi-layer caching with explicit invalidation, and measurable legacy modernisation. Every optimisation is benchmarked, not guessed.",
+        capabilities: [
+          "SQL query profiling and index optimisation under production load",
+          "Multi-layer caching strategy (application, query, HTTP) with invalidation contracts",
+          "Legacy codebase modernisation with measurable performance gates",
+          "Load testing and bottleneck identification",
+        ],
+        integration: "Works within existing infrastructure without forklift upgrades. Caching layers use Redis or application-level stores with TTL and event-driven invalidation. Performance benchmarks are integrated into CI/CD pipelines to prevent regressions.",
+        constraints: "Caching invalidation is the hardest problem — requires disciplined key management. Legacy modernisation often reveals hidden dependencies. Performance improvements must be validated under production-like load patterns.",
+        tags: ["SQL", "Caching"],
+      },
+      {
+        title: "Contract-Driven Frontends",
+        summary: "TypeScript interfaces generated from the same API contracts consumed by third-party integrators. Admin panels, portals, and dashboards that stay in sync when the API evolves.",
+        capabilities: [
+          "TypeScript client generation from OpenAPI contracts",
+          "Admin panels with server-side auth and role-based access",
+          "Customer-facing portals with consistent API contract usage",
+          "Dashboard visualisation with real-time data integration",
+        ],
+        integration: "Frontend types are derived directly from API contract definitions — when the API changes, TypeScript catches mismatches at compile time. Auth flows integrate with the same session management as the backend.",
+        constraints: "Contract alignment requires disciplined API governance. TypeScript generation must handle nullable fields and versioned endpoints gracefully. Server-side auth adds complexity to SPA routing.",
+        tags: ["React", "TypeScript"],
+      },
+    ];
+
+    function open(index) {
+      const s = services[index];
+      body.innerHTML =
+        '<h3 class="heading text-zinc-100" id="service-modal-title">' +
+        s.title +
+        "</h3>" +
+        '<p class="mt-4 text-sm leading-relaxed text-zinc-400">' +
+        s.summary +
+        "</p>" +
+        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">Key capabilities</h4>' +
+        '<ul class="mt-3 space-y-2">' +
+        s.capabilities
+          .map(
+            (c) =>
+              '<li class="flex gap-3 text-sm text-zinc-400"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60"></span>' +
+              c +
+              "</li>"
+          )
+          .join("") +
+        "</ul>" +
+        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">How it integrates</h4>' +
+        '<p class="mt-2 text-sm leading-relaxed text-zinc-400">' +
+        s.integration +
+        "</p>" +
+        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">Key constraints</h4>' +
+        '<p class="mt-2 text-sm leading-relaxed text-zinc-400">' +
+        s.constraints +
+        "</p>" +
+        '<div class="mt-6 flex flex-wrap gap-2">' +
+        s.tags
+          .map(
+            (t) =>
+              '<span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">' +
+              t +
+              "</span>"
+          )
+          .join("") +
+        "</div>";
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+      modal.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
+    }
+
+    triggers.forEach((el) => {
+      el.addEventListener("click", () => open(parseInt(el.dataset.si)));
+    });
+    closes.forEach((el) => el.addEventListener("click", close));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  })();
+</script>

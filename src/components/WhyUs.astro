@@ -16,37 +16,37 @@ const defaults: WhyItem[] = [
     icon: "users",
     title: "Direct engineering",
     description:
-      "One principal engineer from architecture through production. The engineer who designs the system writes every line of code and deploys it to production. Direct communication with the person building your infrastructure.",
+      "One principal engineer from architecture to production.",
   },
   {
     icon: "lightbulb",
     title: "Contract-first design",
     description:
-      "Schema and API contracts are defined and reviewed before implementation begins. The contract drives development, not the reverse. Infrastructure decisions follow from the contract, not from assumptions.",
+      "Contracts defined and reviewed before code is written.",
   },
   {
     icon: "target",
     title: "Production experience",
     description:
-      "Seven years building backend systems for SaaS companies across Europe and North America. Subscription platforms, payment infrastructure, and API systems running in production — not prototypes, not MVPs.",
+      "Seven years of backend systems in production across two continents.",
   },
   {
     icon: "shield",
     title: "Referral-driven practice",
     description:
-      "Clients return because the systems hold up under production load. Repeat engagements and referrals drive the pipeline — not outbound, not ads. Core infrastructure, not marketing sites.",
+      "Referrals and repeat engagements drive the pipeline.",
   },
   {
     icon: "zap",
     title: "Distributed operations",
     description:
-      "Podgorica, Montenegro (UTC+1/+2). Async communication by default, scheduled synchronisation when the problem requires it. Coverage across US Eastern, Central European, and UK time zones.",
+      "Async-friendly across US Eastern and Central European time zones.",
   },
   {
     icon: "file-text",
     title: "Sustainable codebases",
     description:
-      "Designed for the engineer who maintains them next. Readable code, documented trade-offs, and architectures that accommodate changing requirements without structural rewrites. Production handover means the client's team can operate it independently.",
+      "Readable code and documented trade-offs for long-term maintainability.",
   },
 ];
 
@@ -68,24 +68,22 @@ const { sectionId = "why-us", heading = "Approach", items = defaults } = Astro.p
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="heading-lg text-balance text-zinc-100">
-        How we
+        How I
         <br />
-        <span class="gradient-text">build.</span>
+        <span class="gradient-text">work.</span>
       </h2>
       <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
-        Contract-first design. Direct engineering. Production-proven systems.
+        Contracts first. Direct conversation. Production experience.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-zinc-800/40 bg-zinc-800/20 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
       {
         items.map((item) => (
           <div
-            class="flex flex-col gap-4 bg-zinc-950 p-6 hover:bg-zinc-900/80 active:brightness-90 sm:p-7 lg:p-8"
-            data-tilt
+            class="flex flex-col gap-3 rounded-xl border border-zinc-800/30 bg-zinc-900/40 p-6 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-700/50 hover:bg-zinc-900/70 hover:shadow-[0_0_24px_rgba(34,211,238,0.03)] active:brightness-90 sm:p-7 lg:p-8"
             data-reveal
           >
-            <!-- Icon + title row -->
             <div class="flex items-center gap-3">
               <div
                 class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-400/10"
@@ -133,23 +131,14 @@ const { sectionId = "why-us", heading = "Approach", items = defaults } = Astro.p
                   )
                 }
               </div>
-              <h3 class="heading-sm text-zinc-100">
-                {item.title}
-              </h3>
+              <h3 class="heading-sm text-zinc-100">{item.title}</h3>
             </div>
-
-            <!-- Description -->
             <p class="text-sm leading-relaxed text-zinc-500">
               {item.description}
             </p>
           </div>
         ))
       }
-    </div>
-
-    <div class="mt-12 text-center">
-      <hr class="mx-auto mb-6 w-12 border-zinc-800" />
-      <span class="text-xs font-medium uppercase tracking-[0.15em] text-zinc-600">Design. Contract. Implement. Deploy. Iterate.</span>
     </div>
   </div>
 </section>
