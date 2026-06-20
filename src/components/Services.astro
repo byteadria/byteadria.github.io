@@ -45,7 +45,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
 
 <section
   id={sectionId}
-  class="section-container section-padding relative py-24 sm:py-32 lg:py-40"
+  class="section-container section-padding relative py-28 sm:py-36 lg:py-44"
   data-reveal
 >
   <div class="mx-auto max-w-6xl">
@@ -62,7 +62,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
         <br />
         <span class="gradient-text">capabilities.</span>
       </h2>
-      <p class="max-w-md text-sm leading-relaxed text-zinc-500 sm:text-right">
+      <p class="max-w-md text-sm leading-relaxed text-zinc-400 sm:text-right">
         {subheading}
       </p>
     </div>
@@ -112,20 +112,20 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
               {card.title}
             </h3>
 
-            <span class="mt-1 block text-xs leading-relaxed text-zinc-600">
+            <span class="mt-1 block text-xs leading-relaxed text-zinc-400">
               {card.label}
             </span>
 
             <ul class="mt-4 flex flex-wrap gap-x-2.5 gap-y-1">
               {
                 card.highlights.map((tag) => (
-                  <li class="text-[10px] font-medium tracking-wide text-zinc-600 transition-colors duration-200 group-hover:text-zinc-500">
+                  <li class="text-[10px] font-medium tracking-wide text-zinc-400 transition-colors duration-200 group-hover:text-zinc-300">
                     {tag}
                   </li>
                 ))
               }
             </ul>
-            <span class="mt-3 inline-flex items-center gap-1 text-[10px] text-zinc-700 transition-all duration-200 group-hover:text-zinc-500">
+            <span class="mt-3 inline-flex items-center gap-1 text-[10px] text-zinc-400 transition-all duration-200 group-hover:text-zinc-300">
               Click for details <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
             </span>
           </article>
@@ -138,23 +138,24 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
 <!-- Service modal -->
 <div
   id="service-modal"
-  class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
   aria-labelledby="service-modal-title"
 >
   <div class="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" data-service-close></div>
-  <div class="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-zinc-800 bg-zinc-900 p-8 shadow-2xl">
+  <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-800 bg-zinc-900 shadow-2xl">
     <button
-      class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-zinc-300"
+      class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-800/50 bg-zinc-900/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-800/40 sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium sm:text-zinc-300 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-700/60 sm:hover:text-zinc-100"
       data-service-close
       aria-label="Close"
     >
+      <span class="text-sm font-medium">Close</span>
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
     </button>
-    <div id="service-modal-body"></div>
+    <div class="p-6 sm:p-10" id="service-modal-body"></div>
   </div>
 </div>
 
@@ -168,53 +169,53 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
     const services = [
       {
         title: "SaaS Infrastructure",
-        summary: "Multi-tenant subscription engines built on idempotent consumers with metered billing, automated dunning, and Stripe reconciliation. Designed to handle growth from first customer to enterprise scale without structural rewrites.",
+        summary: "I build subscription engines that handle metered billing, dunning, multi-tenant isolation, and Stripe reconciliation. No structural rewrites needed as you grow — it's designed to scale from day one.",
         capabilities: [
           "Metered and tiered billing with usage tracking",
-          "Subscription lifecycle orchestration (trials, upgrades, downgrades, cancellations)",
-          "Idempotent Stripe webhook consumers eliminating duplicate charges",
+          "Subscription lifecycle management — trials, upgrades, downgrades, cancellations",
+          "Idempotent Stripe webhook consumers that eliminate duplicate charges",
           "Multi-tenant data isolation at the database level",
+          "RESTful APIs expose subscription state, customer data, and invoice history for frontend or third-party consumption",
         ],
-        integration: "Works alongside existing billing systems or greenfield. RESTful APIs expose subscription state, customer data, and invoice history for frontend or third-party consumption. Webhook contracts integrate with CRM, analytics, and accounting tools.",
-        constraints: "Idempotency guarantees require careful consumer design. Multi-tenant isolation adds per-query overhead. Dunning timing must account for multiple time zones and billing cycles.",
+        constraints: "Idempotency requires careful consumer design. Multi-tenant isolation adds per-query overhead. Dunning timing must handle multiple time zones and billing cycles.",
         tags: ["Symfony", "Stripe", "MySQL"],
       },
       {
         title: "API Architecture",
-        summary: "Versioned REST APIs that treat every integration as a first-class contract. Webhook verification, content negotiation, and backward-compatible evolution patterns ensure integrators can upgrade on their timeline.",
+        summary: "I design versioned REST APIs where every integration is a first-class contract. Webhooks with signature verification, content negotiation, and backward-compatible evolution — integrators upgrade on their timeline, not mine.",
         capabilities: [
-          "Versioned contract-first API design",
+          "Versioned contract-first API design with OpenAPI specs generated from definitions",
           "Webhook dispatch with signature verification and retry logic",
           "Content negotiation (JSON, XML, CSV) per endpoint",
           "Third-party API integration with rate limiting and circuit breakers",
+          "Integration tests that validate contract compliance before deployment",
         ],
-        integration: "APIs are self-documenting with OpenAPI specs generated from the contract definitions. Webhook delivery guarantees exactly-once semantics via idempotency keys. Integration tests validate contract compliance before deployment.",
         constraints: "Backward compatibility requires disciplined versioning. Webhook reliability depends on consumer idempotency. Rate limiting must balance protection with legitimate throughput.",
         tags: ["API design", "Webhooks"],
       },
       {
         title: "Performance Engineering",
-        summary: "SQL optimisation, multi-layer caching with explicit invalidation, and measurable legacy modernisation. Every optimisation is benchmarked, not guessed.",
+        summary: "SQL profiling, multi-layer caching with explicit invalidation, and measurable legacy modernisation. Every optimisation is benchmarked — I don't guess, I measure.",
         capabilities: [
           "SQL query profiling and index optimisation under production load",
-          "Multi-layer caching strategy (application, query, HTTP) with invalidation contracts",
+          "Multi-layer caching (application, query, HTTP) with TTL and event-driven invalidation",
           "Legacy codebase modernisation with measurable performance gates",
           "Load testing and bottleneck identification",
+          "Performance benchmarks integrated into CI/CD to prevent regressions",
         ],
-        integration: "Works within existing infrastructure without forklift upgrades. Caching layers use Redis or application-level stores with TTL and event-driven invalidation. Performance benchmarks are integrated into CI/CD pipelines to prevent regressions.",
-        constraints: "Caching invalidation is the hardest problem — requires disciplined key management. Legacy modernisation often reveals hidden dependencies. Performance improvements must be validated under production-like load patterns.",
+        constraints: "Caching invalidation is the hardest problem — requires disciplined key management. Legacy modernisation often reveals hidden dependencies. Improvements must be validated under production-like load patterns.",
         tags: ["SQL", "Caching"],
       },
       {
         title: "Contract-Driven Frontends",
-        summary: "TypeScript interfaces generated from the same API contracts consumed by third-party integrators. Admin panels, portals, and dashboards that stay in sync when the API evolves.",
+        summary: "TypeScript interfaces generated from the same API contracts my backend serves. When the API changes, TypeScript catches it at compile time — admin panels, portals, and dashboards stay in sync automatically.",
         capabilities: [
           "TypeScript client generation from OpenAPI contracts",
           "Admin panels with server-side auth and role-based access",
-          "Customer-facing portals with consistent API contract usage",
+          "Customer-facing portals using the same API contracts",
           "Dashboard visualisation with real-time data integration",
+          "Auth flows integrated with the same session management as the backend",
         ],
-        integration: "Frontend types are derived directly from API contract definitions — when the API changes, TypeScript catches mismatches at compile time. Auth flows integrate with the same session management as the backend.",
         constraints: "Contract alignment requires disciplined API governance. TypeScript generation must handle nullable fields and versioned endpoints gracefully. Server-side auth adds complexity to SPA routing.",
         tags: ["React", "TypeScript"],
       },
@@ -226,33 +227,29 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
         '<h3 class="heading text-zinc-100" id="service-modal-title">' +
         s.title +
         "</h3>" +
-        '<p class="mt-4 text-sm leading-relaxed text-zinc-400">' +
+        '<p class="mt-4 text-base leading-relaxed text-zinc-300">' +
         s.summary +
         "</p>" +
-        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">Key capabilities</h4>' +
+        '<h4 class="mt-6 text-sm font-semibold text-zinc-200">What it does</h4>' +
         '<ul class="mt-3 space-y-2">' +
         s.capabilities
           .map(
             (c) =>
-              '<li class="flex gap-3 text-sm text-zinc-400"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60"></span>' +
+              '<li class="flex gap-3 text-base text-zinc-300"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60"></span>' +
               c +
               "</li>"
           )
           .join("") +
         "</ul>" +
-        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">How it integrates</h4>' +
-        '<p class="mt-2 text-sm leading-relaxed text-zinc-400">' +
-        s.integration +
-        "</p>" +
-        '<h4 class="mt-6 text-sm font-semibold text-zinc-300">Key constraints</h4>' +
-        '<p class="mt-2 text-sm leading-relaxed text-zinc-400">' +
+        '<h4 class="mt-6 text-sm font-semibold text-zinc-200">Key challenges</h4>' +
+        '<p class="mt-2 text-base leading-relaxed text-zinc-300">' +
         s.constraints +
         "</p>" +
         '<div class="mt-6 flex flex-wrap gap-2">' +
         s.tags
           .map(
             (t) =>
-              '<span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-500">' +
+              '<span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">' +
               t +
               "</span>"
           )

@@ -223,7 +223,7 @@
   }
 
   .command-palette input::placeholder {
-    @apply text-zinc-600;
+    @apply text-zinc-400;
   }
 
   .command-palette [data-cmd-item] {
@@ -248,7 +248,7 @@
   }
 
   .command-palette [data-cmd-item] .cmd-icon {
-    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-zinc-800/60 bg-zinc-900/80 text-[11px] text-zinc-500;
+    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-zinc-800/60 bg-zinc-900/80 text-[11px] text-zinc-400;
   }
 
   .command-palette [data-cmd-item]:hover .cmd-icon,
@@ -281,6 +281,20 @@
 }
 
 @layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-800/60;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-700/60;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
