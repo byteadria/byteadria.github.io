@@ -34,7 +34,7 @@ const {
           <br />
           <span class="gradient-text">talk.</span>
         </h2>
-        <p class="mt-4 max-w-md text-sm leading-relaxed text-zinc-300">
+        <p class="mt-4 max-w-md text-base leading-relaxed text-zinc-200">
           Tell me what you're building. If it's the kind of work I do, I'll
           respond with a technical assessment within two days.
         </p>
@@ -43,14 +43,14 @@ const {
         <div class="mt-6 flex flex-wrap gap-2">
           <a
             href={`mailto:${email}`}
-            class="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800/60 bg-zinc-900/30 px-3 py-1.5 text-xs text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-300"
+            class="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700/60 bg-zinc-800/30 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-200"
           >
             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
             </svg>
             {email}
           </a>
-          <span class="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800/60 bg-zinc-900/30 px-3 py-1.5 text-xs text-zinc-400">
+          <span class="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700/60 bg-zinc-800/30 px-3 py-1.5 text-sm text-zinc-300">
             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
@@ -75,8 +75,8 @@ const {
           </a>
         </div>
 
-        <p class="mt-4 text-xs text-zinc-400">
-          <span class="text-cyan-400/70">&#10003;</span> Technical assessment
+        <p class="mt-4 text-sm text-zinc-300">
+          <span class="text-cyan-400">&#10003;</span> Technical assessment
           before commitment.
         </p>
       </div>
@@ -90,7 +90,7 @@ const {
           <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
           <div class="grid gap-5 sm:grid-cols-2">
             <div>
-              <label for="name" class="mb-1.5 block text-xs font-medium text-zinc-400">
+              <label for="name" class="mb-1.5 block text-sm font-medium text-zinc-300">
                 Name
               </label>
               <input
@@ -103,7 +103,7 @@ const {
               />
             </div>
             <div>
-              <label for="email-input" class="mb-1.5 block text-xs font-medium text-zinc-400">
+              <label for="email-input" class="mb-1.5 block text-sm font-medium text-zinc-300">
                 Email
               </label>
               <input
@@ -117,7 +117,7 @@ const {
             </div>
           </div>
           <div>
-            <label for="message" class="mb-1.5 block text-xs font-medium text-zinc-400">
+            <label for="message" class="mb-1.5 block text-sm font-medium text-zinc-300">
               Message
             </label>
             <textarea
@@ -131,9 +131,9 @@ const {
           </div>
           <div id="form-status" class="hidden text-sm"></div>
           <div class="flex items-center justify-between gap-4">
-            <p class="text-xs text-zinc-400">
+            <p class="text-sm text-zinc-300">
               Or email us directly at
-              <a href={`mailto:${email}`} class="text-cyan-400/80 underline-offset-2 hover:underline">
+              <a href={`mailto:${email}`} class="text-cyan-400 underline-offset-2 hover:underline">
                 {email}
               </a>
             </p>

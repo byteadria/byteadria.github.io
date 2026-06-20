@@ -123,7 +123,7 @@
   }
 
   .section-label-text {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/80;
+    @apply text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400/80;
   }
 
   /* Scroll reveal */
@@ -183,6 +183,10 @@
     transition: width 0.25s ease, background-color 0.25s ease, height 0.25s ease;
   }
 
+  .nav-link:hover {
+    @apply text-zinc-200;
+  }
+
   .nav-link:hover::after {
     width: 1.25rem;
     height: 1.5px;
@@ -223,11 +227,11 @@
   }
 
   .command-palette input::placeholder {
-    @apply text-zinc-400;
+    @apply text-zinc-300;
   }
 
   .command-palette [data-cmd-item] {
-    @apply flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-400 cursor-pointer transition-colors duration-150;
+    @apply flex items-center gap-3 px-4 py-2.5 text-base text-zinc-300 cursor-pointer transition-colors duration-150;
   }
 
   .command-palette [data-cmd-item]:hover,
@@ -248,12 +252,12 @@
   }
 
   .command-palette [data-cmd-item] .cmd-icon {
-    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-zinc-800/60 bg-zinc-900/80 text-[11px] text-zinc-400;
+    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-zinc-700/60 bg-zinc-800/80 text-xs text-zinc-300;
   }
 
   .command-palette [data-cmd-item]:hover .cmd-icon,
   .command-palette [data-cmd-item].active .cmd-icon {
-    @apply border-zinc-700/60 text-zinc-400;
+    @apply border-zinc-600/60 text-zinc-200;
   }
 
   /* Skip to content */
@@ -282,17 +286,23 @@
 
 @layer utilities {
   .scrollbar-thin::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
+    height: 8px;
+    width: 8px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-zinc-800/60;
+    @apply rounded-full bg-zinc-600/60;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-700/60;
+    @apply bg-zinc-500/60;
+  }
+
+  /* Firefox scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(113, 113, 122, 0.6) transparent;
   }
 
   .text-balance {

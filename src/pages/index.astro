@@ -37,7 +37,7 @@ import Footer from "../components/Footer.astro";
         <!-- Scroll arrows -->
         <button
           id="scroll-left"
-          class="absolute left-1 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-zinc-800/60 bg-zinc-900/80 p-2.5 text-zinc-400 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-700/60 hover:bg-zinc-800/80 hover:text-zinc-200 sm:flex opacity-0 group-hover/scroller:opacity-100"
+          class="absolute left-1 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-zinc-700/60 bg-zinc-800/80 p-2.5 text-zinc-300 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-600/60 hover:bg-zinc-700/80 hover:text-zinc-100 sm:flex opacity-0 group-hover/scroller:opacity-100"
           aria-label="Scroll left"
         >
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -46,7 +46,7 @@ import Footer from "../components/Footer.astro";
         </button>
         <button
           id="scroll-right"
-          class="absolute right-1 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-zinc-800/60 bg-zinc-900/80 p-2.5 text-zinc-400 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-700/60 hover:bg-zinc-800/80 hover:text-zinc-200 sm:flex opacity-0 group-hover/scroller:opacity-100"
+          class="absolute right-1 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-zinc-700/60 bg-zinc-800/80 p-2.5 text-zinc-300 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-600/60 hover:bg-zinc-700/80 hover:text-zinc-100 sm:flex opacity-0 group-hover/scroller:opacity-100"
           aria-label="Scroll right"
         >
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -63,16 +63,16 @@ import Footer from "../components/Footer.astro";
               </svg>
             </div>
             <h3 class="heading text-zinc-100">SaaS Subscription Platform</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-300">
+            <p class="mt-2 text-base leading-relaxed text-zinc-300">
               Recurring billing for multi-tenant SaaS platforms
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">Symfony</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">React</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">Stripe</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">MySQL</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">Symfony</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">React</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">Stripe</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">MySQL</span>
             </div>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs text-cyan-400/80 transition-colors group-hover:text-cyan-400">
+            <span class="mt-4 inline-flex items-center gap-1 text-sm text-cyan-400 transition-colors group-hover:text-cyan-300">
               View details <span aria-hidden="true">&rarr;</span>
             </span>
           </article>
@@ -84,15 +84,15 @@ import Footer from "../components/Footer.astro";
               </svg>
             </div>
             <h3 class="heading text-zinc-100">Document Management CMS</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-300">
+            <p class="mt-2 text-base leading-relaxed text-zinc-300">
               Versioned document engine with server-side PDF rendering
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">Laravel</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">MySQL</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">PHP</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">Laravel</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">MySQL</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">PHP</span>
             </div>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs text-cyan-400/80 transition-colors group-hover:text-cyan-400">
+            <span class="mt-4 inline-flex items-center gap-1 text-sm text-cyan-400 transition-colors group-hover:text-cyan-300">
               View details <span aria-hidden="true">&rarr;</span>
             </span>
           </article>
@@ -104,14 +104,14 @@ import Footer from "../components/Footer.astro";
               </svg>
             </div>
             <h3 class="heading text-zinc-100">Inventory Management API</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-300">
+            <p class="mt-2 text-base leading-relaxed text-zinc-300">
               Multi-warehouse inventory API with supplier coordination
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">Symfony</span>
-              <span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">MySQL</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">Symfony</span>
+              <span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">MySQL</span>
             </div>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs text-cyan-400/80 transition-colors group-hover:text-cyan-400">
+            <span class="mt-4 inline-flex items-center gap-1 text-sm text-cyan-400 transition-colors group-hover:text-cyan-300">
               View details <span aria-hidden="true">&rarr;</span>
             </span>
           </article>
@@ -129,13 +129,13 @@ import Footer from "../components/Footer.astro";
     aria-labelledby="modal-title"
   >
     <div class="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" data-modal-close></div>
-    <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-800 bg-zinc-900 shadow-2xl">
+    <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-800 bg-zinc-900 shadow-2xl scrollbar-thin">
       <button
-        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-800/50 bg-zinc-900/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-800/40 sm:px-3 sm:py-2.5 sm:text-sm sm:font-medium sm:text-zinc-300 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-700/60 sm:hover:text-zinc-100"
+        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-700/50 bg-zinc-800/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-700/70 sm:px-3 sm:py-2.5 sm:text-sm sm:font-semibold sm:text-zinc-200 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-600/80 sm:hover:text-zinc-100"
         data-modal-close
         aria-label="Close"
       >
-        <span class="text-sm font-medium">Close</span>
+        <span class="text-sm font-semibold">Close</span>
         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
@@ -289,7 +289,7 @@ import Footer from "../components/Footer.astro";
         p.tags
           .map(
             (t) =>
-              '<span class="rounded-md border border-zinc-800/60 bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-zinc-400">' +
+              '<span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-sm font-medium text-zinc-200">' +
               t +
               "</span>"
           )

@@ -13,39 +13,39 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
       <!-- Brand -->
       <div class="lg:col-span-4">
-        <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-zinc-100">
-          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-400/10 text-xs font-bold text-cyan-400">
+        <a href="/" class="flex items-center gap-2 text-base font-semibold tracking-tight text-zinc-100">
+          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-400/10 text-sm font-bold text-cyan-400">
             G
           </span>
           <span>GitByte DOO</span>
         </a>
-          <p class="mt-3 max-w-xs text-sm leading-relaxed text-zinc-400">
+          <p class="mt-3 max-w-xs text-base leading-relaxed text-zinc-300">
             Backend systems consultancy based in Podgorica, Montenegro. I build SaaS infrastructure, payment platforms, and API architecture.
           </p>
       </div>
 
       <!-- Navigation -->
       <div class="sm:col-span-1 lg:col-span-3 lg:col-start-6">
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-300">
           Pages
         </p>
         <ul class="space-y-2">
-          <li><a href="#work" class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">Work</a></li>
-          <li><a href="#services" class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">Services</a></li>
-          <li><a href="#stack" class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">Tech Stack</a></li>
-          <li><a href="#about" class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">About</a></li>
-          <li><a href="#contact" class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">Contact</a></li>
+          <li><a href="#work" class="text-base text-zinc-300 transition-colors hover:text-zinc-200">Work</a></li>
+          <li><a href="#services" class="text-base text-zinc-300 transition-colors hover:text-zinc-200">Services</a></li>
+          <li><a href="#stack" class="text-base text-zinc-300 transition-colors hover:text-zinc-200">Tech Stack</a></li>
+          <li><a href="#about" class="text-base text-zinc-300 transition-colors hover:text-zinc-200">About</a></li>
+          <li><a href="#contact" class="text-base text-zinc-300 transition-colors hover:text-zinc-200">Contact</a></li>
         </ul>
       </div>
 
       <!-- Contact -->
       <div class="sm:col-span-1 lg:col-span-3">
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-300">
           Contact
         </p>
         <ul class="space-y-2">
           <li>
-            <a href={`mailto:${email}`} class="text-sm text-zinc-400 transition-colors hover:text-zinc-300">
+            <a href={`mailto:${email}`} class="text-base text-zinc-300 transition-colors hover:text-zinc-200">
               {email}
             </a>
           </li>
@@ -54,7 +54,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
               href={upworkHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-sm text-zinc-400 transition-colors hover:text-zinc-300"
+              class="text-base text-zinc-300 transition-colors hover:text-zinc-200"
             >
               Upwork
             </a>
@@ -64,7 +64,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
 
       <!-- Social -->
       <div class="lg:col-span-2">
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-300">
           Social
         </p>
         <div class="flex items-center gap-4">
@@ -72,7 +72,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
             href="https://github.com/Vimpil"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-zinc-400 transition-colors hover:text-zinc-300"
+            class="text-zinc-300 transition-colors hover:text-zinc-200"
             aria-label="GitHub"
           >
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,7 +83,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
             href="https://www.linkedin.com/in/lifetrue"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-zinc-400 transition-colors hover:text-zinc-300"
+            class="text-zinc-300 transition-colors hover:text-zinc-200"
             aria-label="LinkedIn"
           >
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,10 +99,10 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
   <!-- Bottom bar -->
   <div class="border-t border-zinc-800/30">
     <div class="section-container section-padding flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-      <p class="text-xs text-zinc-400">
+      <p class="text-sm text-zinc-300">
         &copy; {currentYear} GitByte DOO. All rights reserved.
       </p>
-      <div class="flex items-center gap-6 text-xs text-zinc-400">
+      <div class="flex items-center gap-6 text-sm text-zinc-300">
         <span class="hidden sm:inline">Built with Astro</span>
         <span class="hidden sm:inline" aria-hidden="true">&middot;</span>
         <span>Backend systems consultancy</span>
