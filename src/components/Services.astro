@@ -2,8 +2,9 @@
 export interface ServiceCard {
   icon: string;
   title: string;
-  label: string;
-  highlights: string[];
+  problem: string;
+  value: string;
+  technologies: string[];
 }
 
 export interface Props {
@@ -16,31 +17,49 @@ export interface Props {
 const defaults: ServiceCard[] = [
   {
     icon: "server",
-    title: "SaaS Infrastructure",
-    label: "Subscription billing & metering",
-    highlights: ["Symfony", "Stripe", "MySQL"],
+    title: "Backend Architecture",
+    problem: "SaaS companies outgrow their initial backend setup. Monoliths become unwieldy and scaling requires structural changes that touch everything.",
+    value: "Service boundary design, domain modelling, and API architecture that keeps complexity manageable as systems scale.",
+    technologies: ["Symfony", "Laravel", "PHP", "REST"],
   },
   {
     icon: "plug",
-    title: "API Architecture",
-    label: "RESTful & webhook contracts",
-    highlights: ["API design", "Webhooks"],
+    title: "API Development & Integration",
+    problem: "Systems need reliable communication with external providers — each with different protocols, auth schemes, and failure modes.",
+    value: "REST API integration with authentication, retry logic, and contract validation before deployment.",
+    technologies: ["REST", "OAuth", "PHP", "Symfony"],
+  },
+  {
+    icon: "wrench",
+    title: "Legacy Modernization",
+    problem: "Large PHP codebases accumulate technical debt — security gaps, poor maintainability, outdated patterns. Rewrites are risky.",
+    value: "Incremental refactoring without breaking integrations, security improvements, and maintainability enhancements.",
+    technologies: ["PHP", "Symfony", "Legacy", "Security"],
   },
   {
     icon: "gauge",
-    title: "Performance Engineering",
-    label: "SQL & caching optimisation",
-    highlights: ["SQL", "Caching"],
+    title: "Database Performance Engineering",
+    problem: "Production databases slow down under growth. Queries that worked at small scale degrade into bottlenecks.",
+    value: "Slow query analysis, index strategy redesign, and schema review for measurable performance gains.",
+    technologies: ["MySQL", "MariaDB", "SQLite", "SQL"],
   },
   {
-    icon: "window",
-    title: "Contract-Driven Frontends",
-    label: "Typed React dashboards",
-    highlights: ["React", "TypeScript"],
+    icon: "shield",
+    title: "Security Hardening",
+    problem: "Authentication systems accumulate security debt — weak session handling, missing cookie flags, broken access control.",
+    value: "Session hardening, access control implementation, and OWASP-focused security review.",
+    technologies: ["Security", "Sessions", "Authentication", "PHP"],
+  },
+  {
+    icon: "life-buoy",
+    title: "Production Support",
+    problem: "Existing production systems need ongoing maintenance, troubleshooting, and incremental improvements.",
+    value: "Server administration, production troubleshooting, deployment pipeline maintenance, and reliability enhancements.",
+    technologies: ["Docker", "Linux", "Nginx", "WordPress"],
   },
 ];
 
-const { sectionId = "services", heading = "Capabilities", subheading = "What I do day to day.", cards = defaults } = Astro.props;
+const { sectionId = "services", heading = "Capabilities", subheading = "Backend systems that SaaS companies depend on.", cards = defaults } = Astro.props;
 ---
 
 <section
@@ -50,8 +69,8 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
 >
   <div class="mx-auto max-w-6xl">
     <div class="mb-4 flex items-center gap-3">
-      <span class="h-px w-8 bg-cyan-400/60" aria-hidden="true" />
-      <span class="text-base font-semibold uppercase tracking-[0.2em] text-cyan-400">
+      <span class="h-px w-8 bg-blue-400" aria-hidden="true" />
+      <span class="text-base font-semibold uppercase tracking-[0.2em] text-blue-400">
         {heading}
       </span>
     </div>
@@ -62,47 +81,62 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
         <br />
         <span class="gradient-text">capabilities.</span>
       </h2>
-      <p class="max-w-md text-base leading-relaxed text-zinc-300 sm:text-right">
+      <p class="max-w-md text-base leading-relaxed text-zinc-200 sm:text-right">
         {subheading}
       </p>
     </div>
 
-    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
       {
         cards.map((card, i) => (
           <article
-            class="group relative cursor-pointer rounded-2xl border border-zinc-800/40 bg-zinc-900/30 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700/50 hover:bg-zinc-900/60 hover:shadow-[0_0_32px_rgba(34,211,238,0.04)] active:brightness-90"
+            class="group relative cursor-pointer rounded-2xl border border-zinc-800/40 bg-zinc-900/30 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700/50 hover:bg-zinc-900/60 hover:shadow-[0_0_32px_rgba(96,165,250,0.04)] active:brightness-90"
             data-reveal
             data-si={i}
+            data-tilt
           >
             <div
-              class="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/10 transition-colors duration-300 group-hover:bg-cyan-400/15"
+              class="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-blue-400/10 transition-colors duration-300 group-hover:bg-blue-400/15"
             >
               {
                 card.icon === "server" && (
-                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" />
                   </svg>
                 )
               }
               {
-                card.icon === "window" && (
-                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                card.icon === "shield" && (
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "plug" && (
-                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "gauge" && (
-                  <svg class="h-4 w-4 text-cyan-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                  </svg>
+                )
+              }
+              {
+                card.icon === "wrench" && (
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                  </svg>
+                )
+              }
+              {
+                card.icon === "life-buoy" && (
+                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                   </svg>
                 )
               }
@@ -112,20 +146,24 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
               {card.title}
             </h3>
 
-            <span class="mt-1 block text-base leading-relaxed text-zinc-300">
-              {card.label}
-            </span>
+            <p class="mt-2 text-base leading-relaxed text-zinc-200">
+              {card.problem}
+            </p>
+
+            <p class="mt-3 text-base leading-relaxed text-zinc-300">
+              {card.value}
+            </p>
 
             <ul class="mt-4 flex flex-wrap gap-x-2.5 gap-y-1">
               {
-                card.highlights.map((tag) => (
-                  <li class="text-sm font-medium tracking-wide text-zinc-300 transition-colors duration-200 group-hover:text-zinc-200">
+                card.technologies.map((tag) => (
+                  <li class="text-base font-medium tracking-wide text-zinc-200 transition-colors duration-200 group-hover:text-zinc-100">
                     {tag}
                   </li>
                 ))
               }
             </ul>
-            <span class="mt-3 inline-flex items-center gap-1 text-sm text-zinc-300 transition-all duration-200 group-hover:text-zinc-200">
+            <span class="mt-3 inline-flex items-center gap-1 text-base text-zinc-200 transition-all duration-200 group-hover:text-zinc-100">
               Click for details <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
             </span>
           </article>
@@ -146,7 +184,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
   <div class="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" data-service-close></div>
   <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-800 bg-zinc-900 shadow-2xl scrollbar-thin">
     <button
-        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-700/50 bg-zinc-800/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-700/70 sm:px-3 sm:py-2.5 sm:text-base sm:font-semibold sm:text-zinc-200 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-600/80 sm:hover:text-zinc-100"
+        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-700/50 bg-zinc-800/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-700/70 sm:px-3 sm:py-2.5 sm:text-base sm:font-semibold sm:text-zinc-100 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-600/80 sm:hover:text-zinc-100"
       data-service-close
       aria-label="Close"
     >
@@ -168,93 +206,215 @@ const { sectionId = "services", heading = "Capabilities", subheading = "What I d
 
     const services = [
       {
-        title: "SaaS Infrastructure",
-        summary: "I build subscription engines that handle metered billing, dunning, multi-tenant isolation, and Stripe reconciliation. No structural rewrites needed as you grow — it's designed to scale from day one.",
-        capabilities: [
-          "Metered and tiered billing with usage tracking",
-          "Subscription lifecycle management — trials, upgrades, downgrades, cancellations",
-          "Idempotent Stripe webhook consumers that eliminate duplicate charges",
-          "Multi-tenant data isolation at the database level",
-          "RESTful APIs expose subscription state, customer data, and invoice history for frontend or third-party consumption",
+        title: "Backend Architecture",
+        when: [
+          "Monolith is becoming difficult to change without breaking unrelated features",
+          "Service boundaries don't reflect actual domain responsibilities",
+          "Scaling deployments requires coordinated changes across multiple modules",
+          "New engineers struggle to understand where logic belongs",
         ],
-        constraints: "Idempotency requires careful consumer design. Multi-tenant isolation adds per-query overhead. Dunning timing must handle multiple time zones and billing cycles.",
-        tags: ["Symfony", "Stripe", "MySQL"],
+        approach: [
+          "Domain-driven boundary analysis — identify cohesive units of responsibility",
+          "Event and dependency mapping between existing modules",
+          "Interface contract design with versioned APIs and backward compatibility",
+          "Queue-based decoupling for operations that shouldn't block the request cycle",
+          "Deployment pipeline design with environment parity and rollback capability",
+        ],
+        outcomes: [
+          "Clear module boundaries that reduce cognitive load",
+          "Independent deployment capability for individual services",
+          "API contracts that evolve without breaking consumers",
+          "Codebase structure that scales with team size",
+        ],
+        examples: [
+          "Extracted order processing from a monolithic Symfony application into a bounded service with its own data access layer and queue workers",
+          "Designed RESTful API versioning strategy for a SaaS platform supporting multiple client versions simultaneously",
+          "Introduced async processing for long-running report generation, reducing P95 response times from 12s to 400ms",
+        ],
+        technologies: ["Symfony", "Laravel", "PHP", "REST"],
       },
       {
-        title: "API Architecture",
-        summary: "I design versioned REST APIs where every integration is a first-class contract. Webhooks with signature verification, content negotiation, and backward-compatible evolution — integrators upgrade on their timeline, not mine.",
-        capabilities: [
-          "Versioned contract-first API design with OpenAPI specs generated from definitions",
-          "Webhook dispatch with signature verification and retry logic",
-          "Content negotiation (JSON, XML, CSV) per endpoint",
-          "Third-party API integration with rate limiting and circuit breakers",
-          "Integration tests that validate contract compliance before deployment",
+        title: "API Development & Integration",
+        when: [
+          "Third-party provider APIs have different authentication schemes and failure modes",
+          "Partial failures in external integrations cascade into unrelated workflows",
+          "Webhook handling lacks signature verification and retry logic",
+          "Integration tests don't validate actual contract compliance",
         ],
-        constraints: "Backward compatibility requires disciplined versioning. Webhook reliability depends on consumer idempotency. Rate limiting must balance protection with legitimate throughput.",
-        tags: ["API design", "Webhooks"],
+        approach: [
+          "Provider-specific adapter classes with consistent error handling",
+          "Authentication strategy selection — OAuth 2.0 flows, API keys, token refresh",
+          "Retry policies with exponential backoff and circuit breaker patterns",
+          "Webhook verification with HMAC signatures and idempotent processing",
+          "Contract test suites validating request/response schemas before deployment",
+        ],
+        outcomes: [
+          "External integrations that fail gracefully without cascading",
+          "Consistent authentication handling across all providers",
+          "Webhook processing that's idempotent and auditable",
+          "Test coverage that catches contract drift before production",
+        ],
+        examples: [
+          "Built adapter layer for a payment provider integration with automatic failover between primary and backup APIs",
+          "Implemented OAuth 2.0 authorization code flow with token refresh for a SaaS platform connecting to multiple external services",
+          "Designed webhook dispatch system with HMAC verification, retry logic, and dead-letter queue for failed deliveries",
+        ],
+        technologies: ["REST", "OAuth", "PHP", "Symfony"],
       },
       {
-        title: "Performance Engineering",
-        summary: "SQL profiling, multi-layer caching with explicit invalidation, and measurable legacy modernisation. Every optimisation is benchmarked — I don't guess, I measure.",
-        capabilities: [
-          "SQL query profiling and index optimisation under production load",
-          "Multi-layer caching (application, query, HTTP) with TTL and event-driven invalidation",
-          "Legacy codebase modernisation with measurable performance gates",
-          "Load testing and bottleneck identification",
-          "Performance benchmarks integrated into CI/CD to prevent regressions",
+        title: "Legacy Modernization",
+        when: [
+          "Security audit reveals session handling and access control gaps",
+          "Codebase has grown organically with inconsistent patterns and poor separation of concerns",
+          "Critical business logic is embedded in presentation layers",
+          "Next engineer hired will struggle to onboard without significant guidance",
         ],
-        constraints: "Caching invalidation is the hardest problem — requires disciplined key management. Legacy modernisation often reveals hidden dependencies. Improvements must be validated under production-like load patterns.",
-        tags: ["SQL", "Caching"],
+        approach: [
+          "Incremental refactoring with working software at every step",
+          "Security improvements deployed independently — session hardening, cookie flags, CSRF",
+          "Dependency injection and service container adoption for testability",
+          "Code structure improvements through extraction of domain services",
+          "Documentation of architectural decisions for team continuity",
+        ],
+        outcomes: [
+          "Security posture measurably improved without breaking integrations",
+          "Codebase that's approachable for the next engineer",
+          "Test coverage that enables confident future changes",
+          "Domain logic that lives where it belongs, not scattered across controllers",
+        ],
+        examples: [
+          "Refactored a 200K-line Symfony monolith — extracted domain services, introduced dependency injection, and achieved 70% test coverage incrementally over 6 months",
+          "Hardened session management across 40+ legacy controllers — secure flags, fixation prevention, consistent access control via voters",
+          "Migrated embedded SQL from controller methods to repository layer with query builder, improving testability and maintainability",
+        ],
+        technologies: ["PHP", "Symfony", "Legacy", "Security"],
       },
       {
-        title: "Contract-Driven Frontends",
-        summary: "TypeScript interfaces generated from the same API contracts my backend serves. When the API changes, TypeScript catches it at compile time — admin panels, portals, and dashboards stay in sync automatically.",
-        capabilities: [
-          "TypeScript client generation from OpenAPI contracts",
-          "Admin panels with server-side auth and role-based access",
-          "Customer-facing portals using the same API contracts",
-          "Dashboard visualisation with real-time data integration",
-          "Auth flows integrated with the same session management as the backend",
+        title: "Database Performance Engineering",
+        when: [
+          "API response times increase as data volume grows",
+          "Slow query logs show queries running in seconds instead of milliseconds",
+          "Database costs grow without clear correlation to traffic increases",
+          "Write performance degrades after adding indexes for read-heavy queries",
         ],
-        constraints: "Contract alignment requires disciplined API governance. TypeScript generation must handle nullable fields and versioned endpoints gracefully. Server-side auth adds complexity to SPA routing.",
-        tags: ["React", "TypeScript"],
+        approach: [
+          "EXPLAIN plan analysis for top slowest queries by frequency and duration",
+          "Index strategy redesign — composite, covering, and redundant index cleanup",
+          "N+1 query detection and consolidation using batch loading",
+          "Subquery-to-JOIN rewrites where the optimizer can leverage indexes better",
+          "Schema review for data type alignment and write amplification reduction",
+        ],
+        outcomes: [
+          "Measurable reduction in P95 and P99 query latency",
+          "Write performance preserved or improved through index optimization",
+          "Database resource utilization aligned with actual traffic patterns",
+          "Query patterns that scale predictably with data growth",
+        ],
+        examples: [
+          "Reduced P95 query latency from 2.4s to 180ms by redesigning composite indexes and eliminating N+1 patterns in a Symfony repository layer",
+          "Identified and removed 12 redundant indexes that were causing write amplification without improving read performance",
+          "Rewrote 15 slow queries using JOIN optimization and covering indexes, reducing average query time by 73%",
+        ],
+        technologies: ["MySQL", "MariaDB", "SQLite", "SQL"],
+      },
+      {
+        title: "Security Hardening",
+        when: [
+          "Security audit reveals session handling gaps — missing cookie flags, no fingerprint validation",
+          "Access control is implemented inconsistently across controllers",
+          "CSRF protection is missing from state-changing API endpoints",
+          "Third-party penetration test identified authentication weaknesses",
+        ],
+        approach: [
+          "Session transport hardening — secure, HttpOnly, SameSite cookie flags",
+          "Session binding to client characteristics to detect hijacking",
+          "Access control standardization using Symfony voters replacing inline role checks",
+          "CSRF audit across forms and API endpoints with consistent token validation",
+          "OWASP-focused review of authentication flows and dependency vulnerabilities",
+        ],
+        outcomes: [
+          "Session hijacking and fixation attacks prevented at transport layer",
+          "Consistent access control model across all application endpoints",
+          "CSRF protection validated across every state-changing operation",
+          "Security posture that holds up to external audit scrutiny",
+        ],
+        examples: [
+          "Hardened session management across 40+ legacy controllers — secure flags, fixation prevention, idle timeout enforcement",
+          "Implemented browser fingerprint binding that detected 3 hijacked sessions in the first month without impacting legitimate users",
+          "Standardized CSRF protection across 120+ forms and API endpoints using Symfony's CSRF component with token rotation",
+        ],
+        technologies: ["Security", "Sessions", "Authentication", "PHP"],
+      },
+      {
+        title: "Production Support",
+        when: [
+          "Production incidents require senior-level troubleshooting and root cause analysis",
+          "Deployment pipeline is fragile — manual steps, no rollback capability",
+          "Server configuration drift between development and production environments",
+          "Monitoring gaps mean issues are discovered by users, not by the system",
+        ],
+        approach: [
+          "Incident triage with systematic root cause analysis and documentation",
+          "Docker containerization with consistent environments from development to production",
+          "Nginx configuration review and optimization for serving PHP applications",
+          "Deployment pipeline automation with health checks and rollback triggers",
+          "Monitoring and alerting setup for proactive issue detection",
+        ],
+        outcomes: [
+          "Faster incident resolution with documented root causes",
+          "Consistent environments that eliminate 'works on my machine' issues",
+          "Deployment confidence through automation and rollback capability",
+          "Proactive monitoring that catches issues before users do",
+        ],
+        examples: [
+          "Containerized a legacy PHP application with Docker, achieving environment parity and reducing deployment time from 45 minutes to 3 minutes",
+          "Configured Nginx with PHP-FPM tuning for a high-traffic Symfony application, reducing response times by 30% under load",
+          "Set up health check monitoring that detected database connection pool exhaustion before it caused user-facing errors",
+        ],
+        technologies: ["Docker", "Linux", "Nginx", "WordPress"],
       },
     ];
 
     function open(index) {
       const s = services[index];
+
+      const whenItems = s.when.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+
+      const approachItems = s.approach.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+
+      const outcomesItems = s.outcomes.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+
+      const examplesItems = s.examples.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+
+      const techTags = s.technologies
+        .map((t) => '<span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-base font-medium text-zinc-100">' + t + "</span>")
+        .join("");
+
       body.innerHTML =
-        '<h3 class="heading text-zinc-100" id="service-modal-title">' +
-        s.title +
-        "</h3>" +
-        '<p class="mt-4 text-base leading-relaxed text-zinc-300">' +
-        s.summary +
-        "</p>" +
-        '<h4 class="mt-6 text-base font-semibold text-zinc-200">What it does</h4>' +
-        '<ul class="mt-3 space-y-2">' +
-        s.capabilities
-          .map(
-            (c) =>
-              '<li class="flex gap-3 text-base text-zinc-300"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60"></span>' +
-              c +
-              "</li>"
-          )
-          .join("") +
-        "</ul>" +
-        '<h4 class="mt-6 text-base font-semibold text-zinc-200">Key challenges</h4>' +
-        '<p class="mt-2 text-base leading-relaxed text-zinc-300">' +
-        s.constraints +
-        "</p>" +
-        '<div class="mt-6 flex flex-wrap gap-2">' +
-        s.tags
-          .map(
-            (t) =>
-              '<span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-base font-medium text-zinc-200">' +
-              t +
-              "</span>"
-          )
-          .join("") +
-        "</div>";
+        '<h3 class="heading text-zinc-100" id="service-modal-title">' + s.title + "</h3>" +
+
+        '<div class="mt-8">' +
+        '<h4 class="text-base font-semibold text-zinc-100">When teams need this</h4>' +
+        '<ul class="mt-3 space-y-2">' + whenItems + "</ul>" +
+        "</div>" +
+
+        '<div class="mt-8">' +
+        '<h4 class="text-base font-semibold text-zinc-100">How I approach it</h4>' +
+        '<ul class="mt-3 space-y-2">' + approachItems + "</ul>" +
+        "</div>" +
+
+        '<div class="mt-8">' +
+        '<h4 class="text-base font-semibold text-zinc-100">Typical outcomes</h4>' +
+        '<ul class="mt-3 space-y-2">' + outcomesItems + "</ul>" +
+        "</div>" +
+
+        '<div class="mt-8">' +
+        '<h4 class="text-base font-semibold text-zinc-100">Example challenges</h4>' +
+        '<ul class="mt-3 space-y-2">' + examplesItems + "</ul>" +
+        "</div>" +
+
+        '<div class="mt-8 flex flex-wrap gap-2">' + techTags + "</div>";
+
       modal.classList.remove("opacity-0", "pointer-events-none");
       document.body.style.overflow = "hidden";
     }

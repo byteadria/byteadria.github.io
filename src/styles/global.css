@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-200 antialiased;
+    @apply bg-zinc-950 text-zinc-100 text-lg antialiased;
     font-feature-settings:
       "cv02" 1,
       "cv03" 1,
@@ -16,31 +16,31 @@
   }
 
   ::selection {
-    @apply bg-cyan-400/20 text-cyan-200;
+    @apply bg-blue-400/20 text-blue-200;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-cyan-400/60 ring-offset-2 ring-offset-zinc-950;
+    @apply outline-none ring-2 ring-blue-400/60 ring-offset-2 ring-offset-zinc-950;
   }
 
   :target {
     scroll-margin-top: 5rem;
   }
 
-  /* Section transition glow */
+  /* Section transition line — subtle */
   section::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
     width: 100%;
-    max-width: 640px;
+    max-width: 480px;
     height: 1px;
     transform: translateX(-50%);
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(34, 211, 238, 0.08),
+      rgba(148, 163, 184, 0.1),
       transparent
     );
     pointer-events: none;
@@ -75,9 +75,15 @@
     @apply border border-zinc-800/50 bg-zinc-900/60 backdrop-blur-xl;
   }
 
+  /* Code-inspired monospace labels */
+  .mono-label {
+    @apply font-mono text-xs font-medium tracking-wider uppercase;
+    @apply text-zinc-400;
+  }
+
 
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-300 via-blue-400 to-blue-300 bg-clip-text text-transparent;
   }
 
 
@@ -93,9 +99,9 @@
     padding: 1px;
     background: linear-gradient(
       135deg,
-      rgba(34, 211, 238, 0.3),
-      rgba(34, 211, 238, 0.05),
-      rgba(34, 211, 238, 0.3)
+      rgba(148, 163, 184, 0.2),
+      rgba(148, 163, 184, 0.03),
+      rgba(148, 163, 184, 0.2)
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -119,11 +125,11 @@
   }
 
   .section-label-line {
-    @apply h-px w-8 bg-cyan-400/60;
+    @apply h-px w-8 bg-blue-400;
   }
 
   .section-label-text {
-    @apply text-base font-semibold uppercase tracking-[0.2em] text-cyan-400/80;
+    @apply text-base font-semibold uppercase tracking-[0.2em] text-blue-400;
   }
 
   /* Scroll reveal */
@@ -184,7 +190,7 @@
   }
 
   .nav-link:hover {
-    @apply text-zinc-200;
+    @apply text-zinc-100;
   }
 
   .nav-link:hover::after {
@@ -200,7 +206,7 @@
   .nav-link.active::after {
     width: 1.25rem;
     height: 2px;
-    background-color: #22d3ee;
+    background-color: #60a5fa;
   }
 
   /* Command palette */
@@ -227,16 +233,16 @@
   }
 
   .command-palette input::placeholder {
-    @apply text-zinc-300;
+    @apply text-zinc-200;
   }
 
   .command-palette [data-cmd-item] {
-    @apply flex items-center gap-3 px-4 py-2.5 text-base text-zinc-300 cursor-pointer transition-colors duration-150;
+    @apply flex items-center gap-3 px-4 py-2.5 text-base text-zinc-200 cursor-pointer transition-colors duration-150;
   }
 
   .command-palette [data-cmd-item]:hover,
   .command-palette [data-cmd-item].active {
-    @apply bg-zinc-800/60 text-zinc-200;
+    @apply bg-zinc-800/60 text-zinc-100;
   }
 
   .command-palette #cmd-results::-webkit-scrollbar {
@@ -252,17 +258,17 @@
   }
 
   .command-palette [data-cmd-item] .cmd-icon {
-    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-zinc-700/60 bg-zinc-800/80 text-sm text-zinc-300;
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-zinc-700/60 bg-zinc-800/80 text-base text-zinc-200;
   }
 
   .command-palette [data-cmd-item]:hover .cmd-icon,
   .command-palette [data-cmd-item].active .cmd-icon {
-    @apply border-zinc-600/60 text-zinc-200;
+    @apply border-zinc-600/60 text-zinc-100;
   }
 
   /* Skip to content */
   .skip-link {
-    @apply fixed left-4 top-4 z-[200] -translate-y-20 rounded-xl bg-cyan-400 px-4 py-2 text-base font-semibold text-zinc-950 transition-transform duration-200 focus-visible:translate-y-0;
+    @apply fixed left-4 top-4 z-[200] -translate-y-20 rounded-xl bg-blue-400 px-4 py-2 text-base font-semibold text-zinc-950 transition-transform duration-200 focus-visible:translate-y-0;
   }
 
     /* Mermaid diagram styling */
@@ -311,15 +317,15 @@
 
   .bg-grid {
     background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
   .bg-grid-dense {
     background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
@@ -336,10 +342,10 @@
   .bg-gradient-section {
     background: linear-gradient(
       180deg,
-      rgba(34, 211, 238, 0.03) 0%,
+      rgba(96, 165, 250, 0.02) 0%,
       transparent 40%,
       transparent 60%,
-      rgba(34, 211, 238, 0.03) 100%
+      rgba(96, 165, 250, 0.02) 100%
     );
   }
 }

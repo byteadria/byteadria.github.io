@@ -38,7 +38,7 @@ test.describe("Navbar", () => {
 
   test("nav CTA button is clickable", async ({ page }) => {
     await page.goto("/");
-    const cta = page.locator('nav a:has-text("Start a project")');
+    const cta = page.locator('nav a:has-text("Let\'s talk")');
     await expect(cta).toBeVisible();
     await expect(cta).toBeEnabled();
   });
@@ -132,7 +132,7 @@ test.describe("Cursor and interaction stability", () => {
 
     const clickables = [
       page.locator('nav a[data-nav-link]').first(),
-      page.locator('nav a:has-text("Start a project")'),
+      page.locator('nav a:has-text("Let\'s talk")'),
       page.locator('a:has-text("View on Upwork")').first(),
     ];
 
