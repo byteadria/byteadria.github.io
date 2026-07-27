@@ -68,7 +68,7 @@ test.describe("Command palette", () => {
     const labels = await items.allTextContents();
     expect(labels[0]).toContain("Work");
     expect(labels[1]).toContain("Services");
-    expect(labels[2]).toContain("Why GitByte DOO");
+    expect(labels[2]).toContain("Why GitByte");
     expect(labels[3]).toContain("Tech Stack");
     expect(labels[4]).toContain("About");
     expect(labels[5]).toContain("Contact");
