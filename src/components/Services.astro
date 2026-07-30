@@ -68,20 +68,20 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
   data-reveal
 >
   <div class="mx-auto max-w-6xl">
-    <div class="mb-4 flex items-center gap-3">
-      <span class="h-px w-8 bg-blue-400" aria-hidden="true" />
-      <span class="text-base font-semibold uppercase tracking-[0.2em] text-blue-400">
+    <div class="section-label">
+      <span class="section-label-line" aria-hidden="true" />
+      <span class="section-label-text">
         {heading}
       </span>
     </div>
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-      <h2 class="heading-lg text-balance text-zinc-100">
+      <h2 class="heading-lg text-balance text-zinc-900 dark:text-zinc-100">
         System
         <br />
         <span class="gradient-text">capabilities.</span>
       </h2>
-      <p class="max-w-md text-base leading-relaxed text-zinc-200 sm:text-right">
+      <p class="max-w-md text-base leading-relaxed text-zinc-500 dark:text-zinc-200 sm:text-right">
         {subheading}
       </p>
     </div>
@@ -90,80 +90,80 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
       {
         cards.map((card, i) => (
           <article
-            class="group relative cursor-pointer rounded-2xl border border-zinc-800/40 bg-zinc-900/30 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700/50 hover:bg-zinc-900/60 hover:shadow-[0_0_32px_rgba(96,165,250,0.04)] active:brightness-90"
+            class="group relative cursor-pointer rounded-2xl border border-zinc-200/60 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-300/80 hover:bg-zinc-50 hover:shadow-[0_0_32px_rgba(37,99,235,0.04)] active:brightness-95 dark:border-zinc-800/40 dark:bg-zinc-900/30 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-900/60 dark:hover:shadow-[0_0_32px_rgba(96,165,250,0.04)] dark:active:brightness-90"
             data-reveal
             data-si={i}
             data-tilt
           >
             <div
-              class="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-blue-400/10 transition-colors duration-300 group-hover:bg-blue-400/15"
+              class="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600/10 transition-colors duration-300 group-hover:bg-blue-600/15 dark:bg-blue-400/10 dark:group-hover:bg-blue-400/15"
             >
               {
                 card.icon === "server" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "shield" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "plug" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "gauge" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "wrench" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                   </svg>
                 )
               }
               {
                 card.icon === "life-buoy" && (
-                  <svg class="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                   </svg>
                 )
               }
             </div>
 
-            <h3 class="heading text-zinc-100">
+            <h3 class="heading text-zinc-900 dark:text-zinc-100">
               {card.title}
             </h3>
 
-            <p class="mt-2 text-base leading-relaxed text-zinc-200">
+            <p class="mt-2 text-base leading-relaxed text-zinc-600 dark:text-zinc-200">
               {card.problem}
             </p>
 
-            <p class="mt-3 text-base leading-relaxed text-zinc-300">
+            <p class="mt-3 text-base leading-relaxed text-zinc-500 dark:text-zinc-300">
               {card.value}
             </p>
 
             <ul class="mt-4 flex flex-wrap gap-x-2.5 gap-y-1">
               {
                 card.technologies.map((tag) => (
-                  <li class="text-base font-medium tracking-wide text-zinc-200 transition-colors duration-200 group-hover:text-zinc-100">
+                  <li class="text-base font-medium tracking-wide text-zinc-500 transition-colors duration-200 group-hover:text-zinc-700 dark:text-zinc-200 dark:group-hover:text-zinc-100">
                     {tag}
                   </li>
                 ))
               }
             </ul>
-            <span class="mt-3 inline-flex items-center gap-1 text-base text-zinc-200 transition-all duration-200 group-hover:text-zinc-100">
+            <span class="mt-3 inline-flex items-center gap-1 text-base text-zinc-500 transition-all duration-200 group-hover:text-zinc-700 dark:text-zinc-200 dark:group-hover:text-zinc-100">
               Click for details <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
             </span>
           </article>
@@ -181,10 +181,10 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
   aria-modal="true"
   aria-labelledby="service-modal-title"
 >
-  <div class="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" data-service-close></div>
-  <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-800 bg-zinc-900 shadow-2xl scrollbar-thin">
+  <div class="absolute inset-0 bg-white/80 backdrop-blur-sm dark:bg-zinc-950/80" data-service-close></div>
+  <div class="relative w-full max-w-2xl max-h-screen sm:max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border-0 sm:border sm:border-zinc-200 bg-white shadow-2xl shadow-black/10 scrollbar-thin dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-black/50">
     <button
-        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-700/50 bg-zinc-800/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border-0 sm:bg-zinc-700/70 sm:px-3 sm:py-2.5 sm:text-base sm:font-semibold sm:text-zinc-100 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-600/80 sm:hover:text-zinc-100"
+        class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-zinc-200/80 bg-white/95 px-4 py-3 sm:absolute sm:right-3 sm:top-3 sm:w-auto sm:rounded-xl sm:border sm:border-zinc-200 sm:bg-white/70 sm:px-3 sm:py-2.5 sm:text-base sm:font-semibold sm:text-zinc-700 sm:backdrop-blur-sm sm:transition-colors sm:hover:bg-zinc-50/80 sm:hover:text-zinc-900 dark:border-zinc-700/50 dark:bg-zinc-800/95 dark:sm:border-zinc-700 dark:sm:bg-zinc-700/70 dark:sm:text-zinc-100 dark:sm:hover:bg-zinc-600/80 dark:sm:hover:text-zinc-100"
       data-service-close
       aria-label="Close"
     >
@@ -378,38 +378,37 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
     function open(index) {
       const s = services[index];
 
-      const whenItems = s.when.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+      const listItem = (text) => '<li class="text-base leading-relaxed text-zinc-600 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-600 dark:text-zinc-200 dark:before:text-blue-400">' + text + "</li>";
 
-      const approachItems = s.approach.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
-
-      const outcomesItems = s.outcomes.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
-
-      const examplesItems = s.examples.map((item) => '<li class="text-base leading-relaxed text-zinc-200 pl-4 relative before:content-[\'–\'] before:absolute before:left-0 before:text-blue-400">' + item + "</li>").join("");
+      const whenItems = s.when.map(listItem).join("");
+      const approachItems = s.approach.map(listItem).join("");
+      const outcomesItems = s.outcomes.map(listItem).join("");
+      const examplesItems = s.examples.map(listItem).join("");
 
       const techTags = s.technologies
-        .map((t) => '<span class="rounded-md border border-zinc-700/60 bg-zinc-800/80 px-2 py-0.5 text-base font-medium text-zinc-100">' + t + "</span>")
+        .map((t) => '<span class="rounded-md border border-zinc-300/60 bg-zinc-100/80 px-2 py-0.5 text-base font-medium text-zinc-600 dark:border-zinc-700/60 dark:bg-zinc-800/80 dark:text-zinc-100">' + t + "</span>")
         .join("");
 
       body.innerHTML =
-        '<h3 class="heading text-zinc-100" id="service-modal-title">' + s.title + "</h3>" +
+        '<h3 class="heading text-zinc-900 dark:text-zinc-100" id="service-modal-title">' + s.title + "</h3>" +
 
         '<div class="mt-8">' +
-        '<h4 class="text-base font-semibold text-zinc-100">When teams need this</h4>' +
+        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">When teams need this</h4>' +
         '<ul class="mt-3 space-y-2">' + whenItems + "</ul>" +
         "</div>" +
 
         '<div class="mt-8">' +
-        '<h4 class="text-base font-semibold text-zinc-100">How I approach it</h4>' +
+        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">How I approach it</h4>' +
         '<ul class="mt-3 space-y-2">' + approachItems + "</ul>" +
         "</div>" +
 
         '<div class="mt-8">' +
-        '<h4 class="text-base font-semibold text-zinc-100">Typical outcomes</h4>' +
+        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Typical outcomes</h4>' +
         '<ul class="mt-3 space-y-2">' + outcomesItems + "</ul>" +
         "</div>" +
 
         '<div class="mt-8">' +
-        '<h4 class="text-base font-semibold text-zinc-100">Example challenges</h4>' +
+        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Example challenges</h4>' +
         '<ul class="mt-3 space-y-2">' + examplesItems + "</ul>" +
         "</div>" +
 

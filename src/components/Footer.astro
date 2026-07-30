@@ -8,44 +8,44 @@ const currentYear = new Date().getFullYear();
 const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/agencies/1942512521968274328/" } = Astro.props;
 ---
 
-<footer class="border-t border-zinc-800/50 bg-zinc-950">
+<footer class="border-t border-zinc-200/80 bg-zinc-50 dark:border-zinc-800/50 dark:bg-zinc-950">
   <div class="section-container section-padding py-16">
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
       <!-- Brand -->
       <div class="lg:col-span-4">
-        <a href="/" class="flex items-center gap-2 text-base font-semibold tracking-tight text-zinc-100">
-          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-400/10 text-base font-bold text-blue-400">
+        <a href="/" class="flex items-center gap-2 text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600/10 text-base font-bold text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
             G
           </span>
           <span>GitByte</span>
         </a>
-          <p class="mt-3 max-w-xs text-lg leading-relaxed text-zinc-200">
+          <p class="mt-3 max-w-xs text-lg leading-relaxed text-zinc-600 dark:text-zinc-200">
             Backend engineering consultancy based in Podgorica, Montenegro. PHP, Symfony, Laravel, MySQL, and production system maintenance.
           </p>
       </div>
 
       <!-- Navigation -->
       <div class="sm:col-span-1 lg:col-span-3 lg:col-start-6">
-        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-200">
+        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-200">
           Pages
         </p>
         <ul class="space-y-2">
-          <li><a href="#work" class="text-base text-zinc-200 transition-colors hover:text-zinc-100">Work</a></li>
-          <li><a href="#services" class="text-base text-zinc-200 transition-colors hover:text-zinc-100">Services</a></li>
-          <li><a href="#stack" class="text-base text-zinc-200 transition-colors hover:text-zinc-100">Tech Stack</a></li>
-          <li><a href="#about" class="text-base text-zinc-200 transition-colors hover:text-zinc-100">About</a></li>
-          <li><a href="#contact" class="text-base text-zinc-200 transition-colors hover:text-zinc-100">Contact</a></li>
+          <li><a href="#work" class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">Work</a></li>
+          <li><a href="#services" class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">Services</a></li>
+          <li><a href="#stack" class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">Tech Stack</a></li>
+          <li><a href="#about" class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">About</a></li>
+          <li><a href="#contact" class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">Contact</a></li>
         </ul>
       </div>
 
       <!-- Contact -->
       <div class="sm:col-span-1 lg:col-span-3">
-        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-200">
+        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-200">
           Contact
         </p>
         <ul class="space-y-2">
           <li>
-            <a href={`mailto:${email}`} class="text-base text-zinc-200 transition-colors hover:text-zinc-100">
+            <a href={`mailto:${email}`} class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100">
               {email}
             </a>
           </li>
@@ -54,7 +54,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
               href={upworkHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-base text-zinc-200 transition-colors hover:text-zinc-100"
+              class="text-base text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100"
             >
               Upwork
             </a>
@@ -64,7 +64,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
 
       <!-- Social -->
       <div class="lg:col-span-2">
-        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-200">
+        <p class="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-200">
           Social
         </p>
         <div class="flex items-center gap-4">
@@ -72,7 +72,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
             href="https://github.com/Vimpil"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-zinc-200 transition-colors hover:text-zinc-100"
+            class="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100"
             aria-label="GitHub"
           >
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,7 +83,7 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
             href="https://www.linkedin.com/in/lifetrue"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-zinc-200 transition-colors hover:text-zinc-100"
+            class="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-zinc-100"
             aria-label="LinkedIn"
           >
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -97,12 +97,12 @@ const { email = "hello.gitbyte@gmail.com", upworkHref = "https://www.upwork.com/
   </div>
 
   <!-- Bottom bar -->
-  <div class="border-t border-zinc-800/30">
+  <div class="border-t border-zinc-200/60 dark:border-zinc-800/30">
     <div class="section-container section-padding flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-      <p class="text-base text-zinc-200">
+      <p class="text-base text-zinc-500 dark:text-zinc-200">
         &copy; {currentYear} GitByte DOO. All rights reserved.
       </p>
-      <div class="flex items-center gap-6 text-base text-zinc-200">
+      <div class="flex items-center gap-6 text-base text-zinc-500 dark:text-zinc-200">
         <span class="hidden sm:inline">Built with Astro</span>
         <span class="hidden sm:inline" aria-hidden="true">&middot;</span>
         <span>Backend engineering consultancy</span>
