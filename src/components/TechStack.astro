@@ -13,7 +13,7 @@ export interface Props {
 
 const items: TechItem[] = [
   { id: "php", name: "PHP", subtitle: "8.x Runtime", color: "#777BB4" },
-  { id: "symfony", name: "Symfony", subtitle: "Backend Framework", color: "#ffffff" },
+  { id: "symfony", name: "Symfony", subtitle: "Backend Framework", color: "var(--symfony-color)" },
   { id: "laravel", name: "Laravel", subtitle: "Backend Ecosystem", color: "#FF2D20" },
   { id: "mysql", name: "MySQL", subtitle: "Primary Datastore", color: "#4479A1" },
   { id: "mariadb", name: "MariaDB", subtitle: "MySQL Fork", color: "#003545" },
@@ -70,7 +70,7 @@ const { sectionId = "stack", heading = "Tech Stack" } = Astro.props;
                 tech.id === "symfony" && (
                   <svg viewBox="0 0 24 24" class="h-14 w-14 sm:h-16 sm:w-16" fill="none">
                     <circle cx="12" cy="12" r="9" stroke={tech.color} stroke-width="1.5" opacity="0.35" />
-                    <text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="Inter, system-ui, sans-serif">SF</text>
+                    <text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill={tech.color} font-family="Inter, system-ui, sans-serif">SF</text>
                   </svg>
                 )
               }
@@ -183,3 +183,12 @@ const { sectionId = "stack", heading = "Tech Stack" } = Astro.props;
     </div>
   </div>
 </section>
+
+<style is:global>
+  :root {
+    --symfony-color: #111827;
+  }
+  .dark {
+    --symfony-color: #ffffff;
+  }
+</style>
