@@ -19,7 +19,7 @@ const defaults: ServiceCard[] = [
     icon: "server",
     title: "Backend Architecture",
     problem: "SaaS companies outgrow their initial backend setup. Monoliths become unwieldy and scaling requires structural changes that touch everything.",
-    value: "Service boundary design, domain modelling, and API architecture that keeps complexity manageable as systems scale.",
+    value: "Service boundary design, domain modelling, and API architecture that keep complexity from growing with the codebase.",
     technologies: ["Symfony", "Laravel", "PHP", "REST"],
   },
   {
@@ -33,14 +33,14 @@ const defaults: ServiceCard[] = [
     icon: "wrench",
     title: "Legacy Modernization",
     problem: "Large PHP codebases accumulate technical debt through security gaps, poor maintainability, and outdated patterns. Rewrites are risky.",
-    value: "Incremental refactoring without breaking integrations, security improvements, and maintainability enhancements.",
+    value: "Incremental refactoring that never breaks running integrations, with security fixes and cleanup as you go.",
     technologies: ["PHP", "Symfony", "Legacy", "Security"],
   },
   {
     icon: "gauge",
     title: "Database Performance Engineering",
     problem: "Production databases slow down under growth. Queries that worked at small scale degrade into bottlenecks.",
-    value: "Slow query analysis, index strategy redesign, and schema review for measurable performance gains.",
+    value: "Slow query analysis, index strategy redesign, and schema review with measurable latency results.",
     technologies: ["MySQL", "MariaDB", "SQLite", "SQL"],
   },
   {
@@ -54,12 +54,12 @@ const defaults: ServiceCard[] = [
     icon: "life-buoy",
     title: "Production Support",
     problem: "Existing production systems need ongoing maintenance, troubleshooting, and incremental improvements.",
-    value: "Server administration, production troubleshooting, deployment pipeline maintenance, and reliability enhancements.",
+    value: "Server administration, production troubleshooting, deployment pipeline maintenance, and monitoring.",
     technologies: ["Docker", "Linux", "Nginx", "WordPress"],
   },
 ];
 
-const { sectionId = "services", heading = "Capabilities", subheading = "Backend systems that SaaS companies depend on.", cards = defaults } = Astro.props;
+const { sectionId = "services", heading = "Services", subheading = "Security gaps, slow queries, and tangled architecture.", cards = defaults } = Astro.props;
 ---
 
 <section
@@ -77,9 +77,9 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="heading-lg text-balance text-zinc-900 dark:text-zinc-100">
-        System
+        What I
         <br />
-        <span class="gradient-text">capabilities.</span>
+        <span class="gradient-text">help with.</span>
       </h2>
       <p class="max-w-md text-base leading-relaxed text-zinc-500 dark:text-zinc-200 sm:text-right">
         {subheading}
@@ -277,10 +277,10 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "Documentation of architectural decisions for team continuity",
         ],
         outcomes: [
-          "Security posture measurably improved without breaking integrations",
+          "Security measurably improved without breaking integrations",
           "Codebase that's approachable for the next engineer",
           "Test coverage that enables confident future changes",
-          "Domain logic that lives where it belongs, not scattered across controllers",
+          "Domain logic moved out of controllers into dedicated services",
         ],
         examples: [
           "Refactored a 200K-line Symfony monolith by extracting domain services, introducing dependency injection, and achieving 70% test coverage incrementally over 6 months",
@@ -336,7 +336,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "Session hijacking and fixation attacks prevented at transport layer",
           "Consistent access control model across all application endpoints",
           "CSRF protection validated across every state-changing operation",
-          "Security posture that holds up to external audit scrutiny",
+          "Security controls that pass external audit review",
         ],
         examples: [
           "Hardened session management across 40+ legacy controllers using secure flags, fixation prevention, and idle timeout enforcement",
@@ -351,7 +351,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "Production incidents require senior-level troubleshooting and root cause analysis",
           "Deployment pipeline is fragile with manual steps and no rollback capability",
           "Server configuration drift between development and production environments",
-          "Monitoring gaps mean issues are discovered by users, not by the system",
+          "Monitoring gaps mean users discover issues before the system does",
         ],
         approach: [
           "Incident triage with systematic root cause analysis and documentation",
@@ -393,7 +393,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
         '<h3 class="heading text-zinc-900 dark:text-zinc-100" id="service-modal-title">' + s.title + "</h3>" +
 
         '<div class="mt-8">' +
-        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">When teams need this</h4>' +
+        '<h4 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Common situations I help with</h4>' +
         '<ul class="mt-3 space-y-2">' + whenItems + "</ul>" +
         "</div>" +
 

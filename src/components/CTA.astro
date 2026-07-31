@@ -1,14 +1,12 @@
 ---
 export interface Props {
   sectionId?: string;
-  upworkHref?: string;
   email?: string;
   web3formsKey?: string;
 }
 
 const {
   sectionId = "contact",
-  upworkHref = "https://www.upwork.com/agencies/1942512521968274328/",
   email = "hello.gitbyte@gmail.com",
   web3formsKey = "03e1d391-8c07-4f26-a31c-d0ac631fe7ad",
 } = Astro.props;
@@ -35,7 +33,7 @@ const {
           <span class="gradient-text">talk.</span>
         </h2>
         <p class="mt-4 max-w-md text-lg leading-relaxed text-zinc-700 dark:text-zinc-100">
-          Tell me about your backend challenge: authentication, databases, APIs, or legacy code. If it falls within my scope, you'll receive a technical assessment within two days.
+          Tell me about your backend challenge: authentication, databases, APIs, or legacy code. There's no commitment; if it falls within my scope, I'll send a technical assessment within two days.
         </p>
 
         <!-- Quick contact strip -->
@@ -61,9 +59,7 @@ const {
         <!-- Primary CTA -->
         <div class="mt-8 space-y-3">
           <a
-            href={upworkHref}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${email}`}
             class="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-xl bg-blue-600 px-6 text-base font-semibold text-white transition-colors duration-200 hover:bg-blue-500 active:scale-[0.97] sm:w-auto dark:bg-blue-400 dark:text-zinc-950 dark:hover:bg-blue-300"
             style="min-height: 3.25rem"
           >
@@ -131,7 +127,7 @@ const {
           <div id="form-status" class="hidden text-base"></div>
           <div class="flex items-center justify-between gap-4">
             <p class="text-base text-zinc-500 dark:text-zinc-200">
-              Or email us directly at
+              Or email me directly at
               <a href={`mailto:${email}`} class="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400">
                 {email}
               </a>
@@ -198,7 +194,7 @@ const {
           status.className = "text-base text-red-600 dark:text-red-300";
         }
       } catch {
-        status.textContent = "Network error. Please try again or email us directly.";
+        status.textContent = "Network error. Please try again or email me directly.";
         status.className = "text-base text-red-300";
       }
 
