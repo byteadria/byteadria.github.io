@@ -1,12 +1,10 @@
 ---
 export interface Props {
   upworkHref?: string;
-  brandName?: string;
 }
 
 const {
   upworkHref = "https://www.upwork.com/agencies/1942512521968274328/",
-  brandName = "GitByte",
 } = Astro.props;
 ---
 
@@ -43,28 +41,11 @@ const {
   <div
     class="mx-auto flex w-full max-w-7xl flex-col items-center px-4 pt-28 pb-20 text-center sm:px-6 sm:pt-32 lg:px-8 lg:pb-28"
   >
-    <!-- Availability -->
-    <div
-      class="animate-fade-in-down mb-8 inline-flex items-center gap-3 sm:mb-10"
-    >
-      <span
-        class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-base font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-200"
-      >
-        <span class="relative flex h-1.5 w-1.5">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-600/60 dark:bg-blue-400/60"
-          />
-          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-        </span>
-        Open for new work
-      </span>
-    </div>
-
     <p
-      class="animate-fade-in-down mb-5 text-base font-semibold uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-200"
-      style="animation-delay: 0.05s"
+      class="animate-fade-in mb-5 text-base text-zinc-500 dark:text-zinc-200"
+      style="animation-delay: 0s"
     >
-      {brandName}
+      When your backend becomes harder to change.
     </p>
 
     <h1
@@ -80,7 +61,7 @@ const {
       class="animate-fade-in-up mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-zinc-600 dark:text-zinc-200 sm:mt-8 sm:text-lg"
       style="animation-delay: 0.2s"
     >
-      GitByte is a backend engineering consultancy. I help SaaS companies improve, secure, and maintain production systems — authentication, databases, APIs, and legacy codebases. One engineer from architecture through deployment.
+      GitByte is a backend engineering consultancy. I help SaaS companies improve, secure, and maintain production systems: authentication, databases, APIs, and legacy codebases. One engineer from architecture through deployment.
     </p>
 
     <div

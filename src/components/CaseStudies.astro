@@ -25,9 +25,9 @@ const defaults: CaseStudy[] = [
     number: "01",
     title: "Authentication Security Hardening",
     type: "Production backend security hardening",
-    challenge: "A production Symfony backend had accumulated security debt over several years. Session handling followed outdated patterns — no secure cookie flags, no fingerprint validation, and inconsistent access control across legacy controllers. The system was functional but exposed to session hijacking, fixation attacks, and unauthorized access through poorly protected endpoints. Active integrations depended on existing session behavior, so the authentication layer couldn't be replaced wholesale.",
+    challenge: "A production Symfony backend had accumulated security debt over several years. Session handling followed outdated patterns with no secure cookie flags, no fingerprint validation, and inconsistent access control across legacy controllers. The system was functional but exposed to session hijacking, fixation attacks, and unauthorized access through poorly protected endpoints. Active integrations depended on existing session behavior, so the authentication layer couldn't be replaced wholesale.",
     work: "Audited the entire authentication pipeline across 40+ legacy controllers. Implemented secure cookie flags (HttpOnly, Secure, SameSite) and session fixation prevention. Introduced browser fingerprint binding to detect hijacked sessions without impacting legitimate users. Replaced inline role checks with Symfony voters for consistent access control. Standardized CSRF protection across all state-changing endpoints.",
-    decisions: "Layered security approach — each layer deployed independently to minimize blast radius. Session hardening at transport layer, fingerprint validation at application layer, access control improvements at controller layer. Chose incremental deployment over wholesale replacement to preserve existing integrations.",
+    decisions: "Layered security approach, with each layer deployed independently to minimize blast radius. Session hardening at transport layer, fingerprint validation at application layer, access control improvements at controller layer. Chose incremental deployment over wholesale replacement to preserve existing integrations.",
     stack: ["PHP", "Symfony", "Security", "Sessions"],
     result: "Authentication layer hardened across transport, session, and access control layers. Legacy controllers brought under consistent security model. Zero downtime deployment with no breaking changes to existing integrations.",
   },
@@ -36,9 +36,9 @@ const defaults: CaseStudy[] = [
     number: "02",
     title: "Database Performance Engineering",
     type: "Production database optimization",
-    challenge: "A MySQL database serving a production backend was experiencing degraded performance under load. Slow query logs showed multiple queries running in seconds instead of milliseconds. The database had grown organically over several years — indexes were inconsistent, queries used inefficient patterns, and the schema had accumulated redundant columns from past features. Index changes on a high-write database risked write amplification.",
-    work: "Analyzed slow query logs and EXPLAIN plans for the top 10 slowest queries by frequency and duration. Redesigned index strategy — composite indexes for common patterns, covering indexes to eliminate table lookups, redundant index cleanup. Detected and consolidated N+1 query patterns. Rewrote subqueries as JOINs where the optimizer could use indexes more effectively. Reviewed schema for data type alignment.",
-    decisions: "Measured approach: analyze first, optimize incrementally, validate under production-like load. Each optimization treated as a discrete change with its own validation — no batch rewrites. Prioritized by impact: top 10 slowest queries first. Preserved write performance by removing redundant indexes before adding new ones.",
+    challenge: "A MySQL database serving a production backend was experiencing degraded performance under load. Slow query logs showed multiple queries running in seconds instead of milliseconds. The database had grown organically over several years. Indexes were inconsistent, queries used inefficient patterns, and the schema had accumulated redundant columns from past features. Index changes on a high-write database risked write amplification.",
+    work: "Analyzed slow query logs and EXPLAIN plans for the top 10 slowest queries by frequency and duration. Redesigned index strategy using composite indexes for common patterns, covering indexes to eliminate table lookups, and redundant index cleanup. Detected and consolidated N+1 query patterns. Rewrote subqueries as JOINs where the optimizer could use indexes more effectively. Reviewed schema for data type alignment.",
+    decisions: "Measured approach: analyze first, optimize incrementally, validate under production-like load. Each optimization treated as a discrete change with its own validation and no batch rewrites. Prioritized by impact: top 10 slowest queries first. Preserved write performance by removing redundant indexes before adding new ones.",
     stack: ["MySQL", "MariaDB", "SQL", "PHP"],
     result: "Highest-impact query bottlenecks resolved through targeted optimization. Write performance preserved by removing redundant indexes. Schema cleanup reduced storage overhead and improved buffer pool efficiency. All changes deployed against production-representative load before live application.",
     link: { label: "Technical details available on request", url: "#" },
@@ -48,11 +48,11 @@ const defaults: CaseStudy[] = [
     number: "03",
     title: "Enterprise API Integration Platform",
     type: "External system integration architecture",
-    challenge: "An enterprise backend needed to connect internal systems with external platforms — payment providers, partner APIs, and legacy SOAP services. Each external system had different protocols, authentication mechanisms, error formats, and availability profiles. Integration logic was scattered across controllers with no consistent error handling or retry strategy. Partial failures in one integration were cascading into unrelated workflows.",
-    work: "Designed a unified integration layer that abstracts protocol differences behind a consistent interface. Built dedicated adapter classes for each external system — REST clients with OAuth/token management, SOAP clients with WSDL-based request construction, webhook handlers with HMAC signature verification. Implemented shared retry and circuit breaker layer below the adapters. Normalized error responses into consistent internal format.",
+    challenge: "An enterprise backend needed to connect internal systems with external platforms including payment providers, partner APIs, and legacy SOAP services. Each external system had different protocols, authentication mechanisms, error formats, and availability profiles. Integration logic was scattered across controllers with no consistent error handling or retry strategy. Partial failures in one integration were cascading into unrelated workflows.",
+    work: "Designed a unified integration layer that abstracts protocol differences behind a consistent interface. Built dedicated adapter classes for each external system: REST clients with OAuth/token management, SOAP clients with WSDL-based request construction, and webhook handlers with HMAC signature verification. Implemented shared retry and circuit breaker layer below the adapters. Normalized error responses into consistent internal format.",
     decisions: "Adapter pattern chosen to isolate protocol-specific logic. Shared resilience layer provides consistent retry, circuit breaker, and rate limiting behavior across all integrations. Error normalization enables consistent monitoring and alerting. Contract test suites validate each adapter against mocked external responses before deployment.",
     stack: ["PHP", "Symfony", "REST", "SOAP", "OAuth"],
-    result: "External integrations consolidated behind consistent interface. Adding new systems requires implementing only an adapter — connection, retry, and error handling inherited from shared layer. Partial failures no longer cascade into unrelated workflows.",
+    result: "External integrations consolidated behind consistent interface. Adding new systems requires implementing only an adapter, with connection, retry, and error handling inherited from the shared layer. Partial failures no longer cascade into unrelated workflows.",
     link: { label: "Technical details available on request", url: "#" },
   },
   {
@@ -60,11 +60,11 @@ const defaults: CaseStudy[] = [
     number: "04",
     title: "Secure Financial Transaction Backend",
     type: "Payment processing system architecture",
-    challenge: "A financial technology platform needed a backend architecture for transaction workflows — handling payment processing, cryptographic operations on sensitive data, and integration with multiple financial service providers. The existing system processed transactions synchronously, creating bottlenecks during peak loads and no graceful failure handling when a provider was unavailable. Financial regulations required complete audit trails for every transaction state change.",
-    work: "Designed an event-driven transaction workflow engine with provider-agnostic payment processing. Implemented transaction state machine with enforced transitions — each state change validated preconditions and recorded immutable audit entry. Built provider abstraction layer with automatic failover. Decoupled payment processing from request cycle using queue workers with idempotent processing. Isolated cryptographic operations in dedicated service classes.",
+    challenge: "A financial technology platform needed a backend architecture for transaction workflows handling payment processing, cryptographic operations on sensitive data, and integration with multiple financial service providers. The existing system processed transactions synchronously, creating bottlenecks during peak loads and no graceful failure handling when a provider was unavailable. Financial regulations required complete audit trails for every transaction state change.",
+    work: "Designed an event-driven transaction workflow engine with provider-agnostic payment processing. Implemented a transaction state machine with enforced transitions where each state change validated preconditions and recorded an immutable audit entry. Built provider abstraction layer with automatic failover. Decoupled payment processing from request cycle using queue workers with idempotent processing. Isolated cryptographic operations in dedicated service classes.",
     decisions: "Event-driven architecture chosen for async processing and provider failover. Immutable audit entries at each transition for compliance. Idempotent processing prevents duplicate charges on retries. Provider abstraction enables adding new payment services without touching transaction logic. Cryptographic isolation simplifies security auditing and key rotation.",
     stack: ["PHP", "APIs", "Security", "Queues"],
-    result: "Transactions processed asynchronously with idempotent handling — no duplicate charges, no lost transactions. Each state transition immutably logged for compliance. Provider failover occurs automatically without interrupting in-flight transactions. Cryptographic operations isolated from business logic.",
+    result: "Transactions are processed asynchronously with idempotent handling that prevents duplicate charges and lost transactions. Each state transition immutably logged for compliance. Provider failover occurs automatically without interrupting in-flight transactions. Cryptographic operations isolated from business logic.",
     link: { label: "Technical details available on request", url: "#" },
   },
   {
@@ -72,9 +72,9 @@ const defaults: CaseStudy[] = [
     number: "05",
     title: "Production Platform Infrastructure",
     type: "Production system maintenance and extension",
-    challenge: "A production educational platform (BetsuNippon) needed ongoing maintenance and extension — custom WordPress plugins, SQLite data layer, server administration, event management workflows, and content infrastructure for active users. The existing WordPress installation had custom requirements that couldn't be met with off-the-shelf plugins. Server administration and deployment processes required standardization.",
+    challenge: "A production educational platform (BetsuNippon) needed ongoing maintenance and extension including custom WordPress plugins, SQLite data layer, server administration, event management workflows, and content infrastructure for active users. The existing WordPress installation had custom requirements that couldn't be met with off-the-shelf plugins. Server administration and deployment processes required standardization.",
     work: "Maintained and extended the existing WordPress-based infrastructure. Built custom PHP plugins for event management and content workflows. Managed server administration, SQLite data layer, and improved reliability. Implemented deployment standardization and monitoring. Extended content management capabilities while preserving system stability.",
-    decisions: "Extended existing WordPress infrastructure rather than rewriting — platform was functional and had active users. Custom plugins for requirements that couldn't be met with off-the-shelf solutions. SQLite chosen for lightweight data layer where MySQL overhead wasn't justified. Standardized deployment processes for maintainability.",
+    decisions: "Extended existing WordPress infrastructure rather than rewriting since the platform was functional and had active users. Custom plugins for requirements that couldn't be met with off-the-shelf solutions. SQLite chosen for lightweight data layer where MySQL overhead wasn't justified. Standardized deployment processes for maintainability.",
     stack: ["WordPress", "PHP", "SQLite", "Linux"],
     result: "Production system supporting active users. Maintained and extended existing infrastructure, improved reliability without full rewrite. Custom plugins provided event management capabilities aligned with specific operational requirements.",
     link: { label: "Visit BetsuNippon", url: "https://www.betsunippon.us.to/" },
@@ -129,7 +129,7 @@ const defaults: CaseStudy[] = [
   },
 ];
 
-const { sectionId = "work", heading = "Selected Work", subheading = "Production backend systems — solved under real constraints.", studies = defaults } = Astro.props;
+const { sectionId = "work", heading = "Selected Work", subheading = "Case studies from production backend systems.", studies = defaults } = Astro.props;
 ---
 
 <section

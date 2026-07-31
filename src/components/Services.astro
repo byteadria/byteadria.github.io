@@ -25,14 +25,14 @@ const defaults: ServiceCard[] = [
   {
     icon: "plug",
     title: "API Development & Integration",
-    problem: "Systems need reliable communication with external providers — each with different protocols, auth schemes, and failure modes.",
+    problem: "Systems need reliable communication with external providers, each with different protocols, auth schemes, and failure modes.",
     value: "REST API integration with authentication, retry logic, and contract validation before deployment.",
     technologies: ["REST", "OAuth", "PHP", "Symfony"],
   },
   {
     icon: "wrench",
     title: "Legacy Modernization",
-    problem: "Large PHP codebases accumulate technical debt — security gaps, poor maintainability, outdated patterns. Rewrites are risky.",
+    problem: "Large PHP codebases accumulate technical debt through security gaps, poor maintainability, and outdated patterns. Rewrites are risky.",
     value: "Incremental refactoring without breaking integrations, security improvements, and maintainability enhancements.",
     technologies: ["PHP", "Symfony", "Legacy", "Security"],
   },
@@ -46,7 +46,7 @@ const defaults: ServiceCard[] = [
   {
     icon: "shield",
     title: "Security Hardening",
-    problem: "Authentication systems accumulate security debt — weak session handling, missing cookie flags, broken access control.",
+    problem: "Authentication systems accumulate security debt through weak session handling, missing cookie flags, and broken access control.",
     value: "Session hardening, access control implementation, and OWASP-focused security review.",
     technologies: ["Security", "Sessions", "Authentication", "PHP"],
   },
@@ -214,7 +214,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "New engineers struggle to understand where logic belongs",
         ],
         approach: [
-          "Domain-driven boundary analysis — identify cohesive units of responsibility",
+          "Domain-driven boundary analysis to identify cohesive units of responsibility",
           "Event and dependency mapping between existing modules",
           "Interface contract design with versioned APIs and backward compatibility",
           "Queue-based decoupling for operations that shouldn't block the request cycle",
@@ -243,7 +243,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
         ],
         approach: [
           "Provider-specific adapter classes with consistent error handling",
-          "Authentication strategy selection — OAuth 2.0 flows, API keys, token refresh",
+          "Authentication strategy selection covering OAuth 2.0 flows, API keys, and token refresh",
           "Retry policies with exponential backoff and circuit breaker patterns",
           "Webhook verification with HMAC signatures and idempotent processing",
           "Contract test suites validating request/response schemas before deployment",
@@ -271,7 +271,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
         ],
         approach: [
           "Incremental refactoring with working software at every step",
-          "Security improvements deployed independently — session hardening, cookie flags, CSRF",
+          "Security improvements deployed independently, including session hardening, cookie flags, and CSRF",
           "Dependency injection and service container adoption for testability",
           "Code structure improvements through extraction of domain services",
           "Documentation of architectural decisions for team continuity",
@@ -283,8 +283,8 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "Domain logic that lives where it belongs, not scattered across controllers",
         ],
         examples: [
-          "Refactored a 200K-line Symfony monolith — extracted domain services, introduced dependency injection, and achieved 70% test coverage incrementally over 6 months",
-          "Hardened session management across 40+ legacy controllers — secure flags, fixation prevention, consistent access control via voters",
+          "Refactored a 200K-line Symfony monolith by extracting domain services, introducing dependency injection, and achieving 70% test coverage incrementally over 6 months",
+          "Hardened session management across 40+ legacy controllers using secure flags, fixation prevention, and consistent access control via voters",
           "Migrated embedded SQL from controller methods to repository layer with query builder, improving testability and maintainability",
         ],
         technologies: ["PHP", "Symfony", "Legacy", "Security"],
@@ -299,7 +299,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
         ],
         approach: [
           "EXPLAIN plan analysis for top slowest queries by frequency and duration",
-          "Index strategy redesign — composite, covering, and redundant index cleanup",
+          "Index strategy redesign using composite and covering indexes, plus redundant index cleanup",
           "N+1 query detection and consolidation using batch loading",
           "Subquery-to-JOIN rewrites where the optimizer can leverage indexes better",
           "Schema review for data type alignment and write amplification reduction",
@@ -320,13 +320,13 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
       {
         title: "Security Hardening",
         when: [
-          "Security audit reveals session handling gaps — missing cookie flags, no fingerprint validation",
+          "Security audit reveals session handling gaps including missing cookie flags and no fingerprint validation",
           "Access control is implemented inconsistently across controllers",
           "CSRF protection is missing from state-changing API endpoints",
           "Third-party penetration test identified authentication weaknesses",
         ],
         approach: [
-          "Session transport hardening — secure, HttpOnly, SameSite cookie flags",
+          "Session transport hardening with secure, HttpOnly, and SameSite cookie flags",
           "Session binding to client characteristics to detect hijacking",
           "Access control standardization using Symfony voters replacing inline role checks",
           "CSRF audit across forms and API endpoints with consistent token validation",
@@ -339,7 +339,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
           "Security posture that holds up to external audit scrutiny",
         ],
         examples: [
-          "Hardened session management across 40+ legacy controllers — secure flags, fixation prevention, idle timeout enforcement",
+          "Hardened session management across 40+ legacy controllers using secure flags, fixation prevention, and idle timeout enforcement",
           "Implemented browser fingerprint binding that detected 3 hijacked sessions in the first month without impacting legitimate users",
           "Standardized CSRF protection across 120+ forms and API endpoints using Symfony's CSRF component with token rotation",
         ],
@@ -349,7 +349,7 @@ const { sectionId = "services", heading = "Capabilities", subheading = "Backend 
         title: "Production Support",
         when: [
           "Production incidents require senior-level troubleshooting and root cause analysis",
-          "Deployment pipeline is fragile — manual steps, no rollback capability",
+          "Deployment pipeline is fragile with manual steps and no rollback capability",
           "Server configuration drift between development and production environments",
           "Monitoring gaps mean issues are discovered by users, not by the system",
         ],
