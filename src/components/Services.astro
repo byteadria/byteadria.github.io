@@ -18,43 +18,43 @@ const defaults: ServiceCard[] = [
   {
     icon: "server",
     title: "Backend Architecture",
-    problem: "SaaS companies outgrow their initial backend setup. Monoliths become unwieldy and scaling requires structural changes that touch everything.",
-    value: "Service boundary design, domain modelling, and API architecture that keep complexity from growing with the codebase.",
+    problem: "SaaS companies outgrow their initial backend setup. Monoliths become unwieldy and shipping new features requires structural changes that touch everything.",
+    value: "Service boundaries, domain modelling, and versioned API contracts — so a change stays contained in the module that owns it.",
     technologies: ["Symfony", "Laravel", "PHP", "REST"],
   },
   {
     icon: "plug",
     title: "API Development & Integration",
-    problem: "Systems need reliable communication with external providers, each with different protocols, auth schemes, and failure modes.",
-    value: "REST API integration with authentication, retry logic, and contract validation before deployment.",
+    problem: "Products depend on external APIs, each with its own protocols, auth schemes, and failure modes.",
+    value: "Integrations that fail gracefully instead of cascading across workflows — retry policies, circuit breakers, and contract validation before deployment.",
     technologies: ["REST", "OAuth", "PHP", "Symfony"],
   },
   {
     icon: "wrench",
     title: "Legacy Modernization",
-    problem: "Large PHP codebases accumulate technical debt through security gaps, poor maintainability, and outdated patterns. Rewrites are risky.",
-    value: "Incremental refactoring that never breaks running integrations, with security fixes and cleanup as you go.",
+    problem: "Large PHP codebases accumulate technical debt through security gaps, poor maintainability, and outdated patterns. Full rewrites are risky and expensive.",
+    value: "Incremental refactoring that lowers technical debt and closes security gaps without a full rewrite or downtime.",
     technologies: ["PHP", "Symfony", "Legacy", "Security"],
   },
   {
     icon: "gauge",
     title: "Database Performance Engineering",
-    problem: "Production databases slow down under growth. Queries that worked at small scale degrade into bottlenecks.",
-    value: "Slow query analysis, index strategy redesign, and schema review with measurable latency results.",
+    problem: "Production databases slow down under growth. Queries that worked at small scale degrade into bottlenecks that users feel.",
+    value: "Slow query analysis, index strategy redesign, and schema review — with latency measured before and after.",
     technologies: ["MySQL", "MariaDB", "SQLite", "SQL"],
   },
   {
     icon: "shield",
     title: "Security Hardening",
     problem: "Authentication systems accumulate security debt through weak session handling, missing cookie flags, and broken access control.",
-    value: "Session hardening, access control implementation, and OWASP-focused security review.",
+    value: "Session hardening, consistent access control, and OWASP review — closing the specific gaps in your authentication flow.",
     technologies: ["Security", "Sessions", "Authentication", "PHP"],
   },
   {
     icon: "life-buoy",
     title: "Production Support",
-    problem: "Existing production systems need ongoing maintenance, troubleshooting, and incremental improvements.",
-    value: "Server administration, production troubleshooting, deployment pipeline maintenance, and monitoring.",
+    problem: "Fragile deployments, manual release steps, and monitoring gaps leave production issues to be discovered by users.",
+    value: "Structured troubleshooting, deployment automation, and monitoring that surface problems early.",
     technologies: ["Docker", "Linux", "Nginx", "WordPress"],
   },
 ];
@@ -77,9 +77,9 @@ const { sectionId = "services", heading = "Services", subheading = "Security gap
 
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 class="heading-lg text-balance text-zinc-900 dark:text-zinc-100">
-        What I
+        Making backend systems
         <br />
-        <span class="gradient-text">help with.</span>
+        <span class="gradient-text">easier to change.</span>
       </h2>
       <p class="max-w-md text-base leading-relaxed text-zinc-500 dark:text-zinc-200 sm:text-right">
         {subheading}
@@ -179,6 +179,7 @@ const { sectionId = "services", heading = "Services", subheading = "Security gap
   class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
+  aria-label="Service details"
   aria-labelledby="service-modal-title"
 >
   <div class="absolute inset-0 bg-white/80 backdrop-blur-sm dark:bg-zinc-950/80" data-service-close></div>

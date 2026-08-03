@@ -14,9 +14,9 @@ export interface Props {
 const defaults: WhyItem[] = [
   {
     icon: "users",
-    title: "Direct engagement",
+    title: "Analyze before changing",
     description:
-      "A senior engineer personally owns the work, end to end.",
+      "I start by understanding the system and the team that runs it — query plans, audits, and profiling — before changing anything.",
   },
   {
     icon: "lightbulb",
@@ -26,31 +26,31 @@ const defaults: WhyItem[] = [
   },
   {
     icon: "target",
-    title: "Production experience",
+    title: "Validated before release",
     description:
-      "Work is validated against production-like load and real failure modes before it ships.",
+      "Load tests and failure-mode checks on a staging setup that matches production, before anything ships.",
   },
   {
     icon: "shield",
-    title: "Engineering discipline",
+    title: "Reviewed and tested",
     description:
-      "Code review, test coverage, and deployment validation that keeps systems working.",
+      "Every change passes code review and tests before it reaches your production system.",
   },
   {
     icon: "zap",
-    title: "Async-friendly operations",
+    title: "Distributed team workflow",
     description:
-      "Overlap with US Eastern and Central European time zones. Structured, async-first communication with documented updates.",
+      "Overlapping hours with US Eastern and Central European time zones, with updates documented asynchronously so decisions keep moving between meetings.",
   },
   {
     icon: "file-text",
     title: "Maintainable codebases",
     description:
-      "Readable code, documented trade-offs, and migration paths that another engineer can continue working with.",
+      "Readable code, documented trade-offs, and migration paths that your team can review, maintain, and extend.",
   },
 ];
 
-const { sectionId = "why-us", heading = "Approach", items = defaults } = Astro.props;
+const { sectionId = "why-us", heading = "Process", items = defaults } = Astro.props;
 ---
 
 <section
@@ -73,7 +73,7 @@ const { sectionId = "why-us", heading = "Approach", items = defaults } = Astro.p
         <span class="gradient-text">work.</span>
       </h2>
       <p class="max-w-md text-base leading-relaxed text-zinc-500 dark:text-zinc-200 sm:text-right">
-        Clear contracts and direct communication throughout the project.
+        Contracts before code, reviews before release, and testing on a staging setup that matches production.
       </p>
     </div>
 

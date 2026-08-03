@@ -133,7 +133,7 @@ test.describe("Cursor and interaction stability", () => {
     const clickables = [
       page.locator('nav a[data-nav-link]').first(),
       page.locator('nav a:has-text("Let\'s talk")'),
-      page.locator('a:has-text("View on Upwork")').first(),
+      page.locator('a:has-text("View on GitHub")').first(),
     ];
 
     for (const el of clickables) {

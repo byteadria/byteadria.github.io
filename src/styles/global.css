@@ -16,7 +16,6 @@
     --cmd-text-secondary: #71717a;
     --scrollbar-bg: rgba(212, 212, 216, 0.6);
     --scrollbar-hover: rgba(161, 161, 170, 0.6);
-    --mermaid-text: #3f3f46;
     --grid-opacity: 0.04;
     --noise-opacity: 0.025;
     --noise-blend: normal;
@@ -35,7 +34,6 @@
     --cmd-text-secondary: #a1a1aa;
     --scrollbar-bg: rgba(113, 113, 122, 0.6);
     --scrollbar-hover: rgba(113, 113, 122, 0.6);
-    --mermaid-text: #e4e4e7;
     --grid-opacity: 0.04;
     --noise-opacity: 0.035;
     --noise-blend: overlay;
@@ -119,11 +117,6 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-  }
-
-  .mono-label {
-    @apply font-mono text-xs font-medium tracking-wider uppercase;
-    @apply text-zinc-400;
   }
 
   .gradient-text {
@@ -356,16 +349,6 @@
   .dark .skip-link {
     background: #60a5fa;
     @apply text-zinc-950;
-  }
-
-  .mermaid .label {
-    font-family: "JetBrains Mono", monospace;
-    color: var(--mermaid-text);
-  }
-
-  .mermaid .cluster-label text,
-  .mermaid .label text {
-    fill: var(--mermaid-text);
   }
 }
 

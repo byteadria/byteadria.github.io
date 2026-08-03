@@ -1,4 +1,8 @@
 ---
+import "../styles/fonts.css";
+import interWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2";
+import spaceGroteskWoff2 from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2";
+
 export interface Props {
   title: string;
   description: string;
@@ -25,13 +29,9 @@ const canonicalURL = Astro.url;
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Space Grotesk (headings) + Inter (body) + JetBrains Mono (code) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Space Grotesk (headings) + Inter (body), self-hosted via @fontsource-variable -->
+    <link rel="preload" href={interWoff2} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={spaceGroteskWoff2} as="font" type="font/woff2" crossorigin />
 
     <script is:inline>
       (function () {
@@ -53,7 +53,7 @@ const canonicalURL = Astro.url;
         style="background: radial-gradient(ellipse 60% 50% at 50% 0%, #60a5fa, transparent)"
       />
     </div>
-    <a href="#main-content" class="skip-link" tabindex="1">
+    <a href="#main-content" class="skip-link">
       Skip to content
     </a>
 
@@ -76,32 +76,13 @@ const canonicalURL = Astro.url;
             ESC
           </kbd>
         </div>
-        <div id="cmd-results" class="max-h-64 overflow-y-auto py-2" role="listbox"></div>
+        <div id="cmd-results" class="max-h-64 overflow-y-auto py-2" role="listbox" aria-label="Navigation results"></div>
       </div>
     </div>
 
     <main id="main-content" style="isolation: isolate">
       <slot />
     </main>
-
-    <script>
-      import mermaid from "mermaid";
-      const isDark = document.documentElement.classList.contains("dark");
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: "base",
-        themeVariables: {
-          background: "transparent",
-          primaryColor: isDark ? "#18181b" : "#f4f4f5",
-          primaryTextColor: isDark ? "#e4e4e7" : "#3f3f46",
-          primaryBorderColor: isDark ? "#60a5fa33" : "#2563eb33",
-          lineColor: isDark ? "#60a5fa66" : "#2563eb66",
-          secondaryColor: isDark ? "#09090b" : "#ffffff",
-          tertiaryColor: isDark ? "#27272a" : "#e4e4e7",
-          fontSize: "12px",
-        },
-      });
-    </script>
 
     <script>
       (() => {
@@ -164,7 +145,11 @@ const canonicalURL = Astro.url;
           }
         }, { passive: true });
 
-        updateActiveSection();
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(updateActiveSection);
+        } else {
+          setTimeout(updateActiveSection, 200);
+        }
 
         // ─── Tilt effect (RAF-throttled) ────────────────────────────────
         let tiltCard = null;
