@@ -43,6 +43,28 @@ const canonicalURL = Astro.url;
     </script>
 
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "GitByte",
+      "url": "https://byteadria.github.io",
+      "description": "Founder-led backend engineering practice specializing in PHP, Symfony, and Laravel.",
+      "founder": {
+        "@type": "Person",
+        "name": "Kirill Shevchenko"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Podgorica",
+        "addressCountry": "ME"
+      },
+      "email": "hello.gitbyte@gmail.com",
+      "sameAs": [
+        "https://github.com/Vimpil",
+        "https://www.linkedin.com/in/lifetrue"
+      ]
+    })} />
   </head>
   <body class="relative min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
